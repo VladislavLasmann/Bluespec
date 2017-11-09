@@ -1,3 +1,5 @@
+// Working with multiple modules in a file
+
 package Tb;
 
 module mkTb(Empty);
@@ -9,12 +11,13 @@ module mkTb(Empty);
     endrule
 endmodule: mkTb
 
-interface Ifc_type;
+// Interface is like a datatype
+interface Ifc_type;                             
     method int the_answer (int x, int y, int z);
 endinterface: Ifc_type
 
-
-module mkModuleDeepThought(Ifc_type);
+// mkModuleDeepThought is an Ifc_type -type
+module mkModuleDeepThought(Ifc_type);               
     method int the_answer (int x, int y, int z);
         return x + y + z;
     endmethod
