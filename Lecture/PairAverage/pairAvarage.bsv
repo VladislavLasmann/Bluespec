@@ -20,7 +20,7 @@ module mkPairAverage (PairAvarage);
             newval  <= val;
             got_new <= True;
         endmethod
-    endinterface;
+    endinterface
 
     interface Get pair_avarage;
         method ActionValue#(int) get() if (got_new && got_old);
