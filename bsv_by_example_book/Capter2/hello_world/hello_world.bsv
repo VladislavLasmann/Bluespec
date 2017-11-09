@@ -13,5 +13,4 @@ module mkTb(Empty);
     
 endmodule: mkTb
 
-
 endpackage: Tb
