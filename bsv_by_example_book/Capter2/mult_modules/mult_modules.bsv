@@ -7,7 +7,7 @@ module mkTb(Empty);
         $display("Hello World! The answer is: %0d", ifc.the_answer(10, 15, 17) );
         $finish(0);
     endrule
-module: mkTb
+endmodule: mkTb
 
 interface Ifc_type;
     method int the_answer (int x, int y, int z);
