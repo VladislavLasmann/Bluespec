@@ -52,10 +52,6 @@ typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
             state <= 1;
         endrule
 
-        method ActionValue#(UInt#(8)) getNextState;
-            return state + 1;
-        endmethod
-
         rule stateMult(state == 1);
             $display("Testing Multiplication:");
             dut.setupCalculation(Mul, 5, 12);
@@ -114,5 +110,9 @@ typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
             $display("testbench finished");
             $finish();
         endrule
+
+        method ActionValue#(UInt#(8)) getNextState;
+            return state + 1;
+        endmethod
     endmodule
 endpackage
