@@ -9,7 +9,6 @@ package HelloBluespec;
         rule helloDisplay (readyDisplay) ;
             $display("(%0d) Hello World!", $time);
             counter         <= 0;
-            readyDisplay    <= True;
         endrule
     endmodule
 endpackage
