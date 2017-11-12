@@ -49,7 +49,6 @@ typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
 
         rule aaa;
             $display("bullshit!");
-            $finish();
         endrule
 
         rule stateMult (state == 0);
