@@ -45,24 +45,14 @@ typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
 
     module mkTestbench(Empty);
         HelloALU        dut             <- mkSimpleALU;
-
-        Reg#(Int#(32))  firstOperand    <- mkReg(0);
-        Reg#(Int#(32))  secondOperand   <- mkReg(0);
-        Reg#(Int#(32))  result          <- mkReg(0);
-
         Reg#(UInt#(3))  state           <- mkReg(0);
-        Reg#(Bool)      flush           <- mkReg(False);
-
-        rule flushValues (flush);
-            firstOperand    <= 0;
-            secondOperand   <= 0;
-            result          <= 0;
-            flush           <= False;
-        endrule
 
         rule state0_Mult (!flush && (state == 0) );
-
-            flush           <= True;
+            $display("Testing Multiplication:");
+            dut.setupCalculation(Mul, 5, 12);
+            $display("5 * 12=%d", dut.getResult());
+            dut.setupCalculation(Mul, 5, -12);
+            $display("5 * -12=%d", dut.getResult());
             state           <= state + 1;
         endrule
 
