@@ -1,16 +1,15 @@
 package HelloBluespec;
     module mkHelloBluespec(Empty);
-        Reg#(UInt)  counter         <- mkReg(0);
-        Reg#(UInt)  maxCounter      <- mkReg(25);
-        Reg#(Bool)  readyDisplay    <- mkReg(False);
+        Reg#(UInt#(25)) counter         <- mkReg(0);
+        Reg#(Bool)      readyDisplay    <- mkReg(False);
 
         rule count( !readyDisplay && counter < maxCounter);
             counter <= counter + 1;
         endrule
 
-        rule resetCounter (counter == maxCounter);
+        rule resetCounter ( msb(counter) == 1);
             counter         <= 0;
-            readyDisplay    <= False;
+            readyDisplay    <= True;
         endrule
 
         rule helloDisplay (readyDisplay) ;
