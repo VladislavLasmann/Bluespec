@@ -29,7 +29,7 @@ module mkPairAverage (PairAvarage);
     endinterface
 endmodule
 
-module top(Empty);
+module mkTestBench(Empty);
 
     Reg#(int)   invalue <- mkReg(0);
     PairAvarage pa      <- mkPairAverage;
