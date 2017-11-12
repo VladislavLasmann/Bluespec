@@ -6,7 +6,7 @@ package HelloBluespec;
 
         rule count( !readyDisplay && counter < maxCounter);
             counter <= counter + 1;
-        endrule;
+        endrule
 
         rule resetCounter (counter == maxCounter);
             counter         <= 0;
