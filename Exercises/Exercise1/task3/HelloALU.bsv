@@ -45,7 +45,7 @@ typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
 
     module mkTestbench(Empty);
         HelloALU        dut        <- mkSimpleALU;
-        Reg#(UInt#(8))  state      <- mkReg(0);
+        Reg#(UInt#(8))  state      <- mkReg;
 
         rule stateMult (state == 0);
             $display("Testing Multiplication:");
