@@ -45,65 +45,75 @@ typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
 
     module mkTestbench(Empty);
         HelloALU        dut     <- mkSimpleALU;
-        Reg#(UInt#(8))  state   <- mkReg(1);
+        Reg#(Bool)      state1  <- mkReg(True);
+        Reg#(Bool)      state2  <- mkReg(False);
+        Reg#(Bool)      state3  <- mkReg(False);
+        Reg#(Bool)      state4  <- mkReg(False);
+        Reg#(Bool)      state5  <- mkReg(False);
+        Reg#(Bool)      state6  <- mkReg(False);
+        Reg#(Bool)      state7  <- mkReg(False);
 
-        rule stateMult;
-            if (state == 'h1) begin
-                $display("Testing Multiplication:");
-                dut.setupCalculation(Mul, 5, 12);
-                $display("5 * 12=%d", dut.getResult());
-                dut.setupCalculation(Mul, 5, -12);
-                $display("5 * -12=%d", dut.getResult());
-                state <= state + 1;
-            end
+        rule stateMult(state1);
+            $display("Testing Multiplication:");
+            dut.setupCalculation(Mul, 5, 12);
+            $display("5 * 12=%d", dut.getResult());
+            dut.setupCalculation(Mul, 5, -12);
+            $display("5 * -12=%d", dut.getResult());
+            state1 <= False;
+            state2 <= True;
         endrule
 
-        rule stateDiv(state == 'h2);
+        rule stateDiv(state2);
             $display("Testing Multiplication:");
             dut.setupCalculation(Div, 5, 12);
             $display("5 * 12=%d", dut.getResult());
             dut.setupCalculation(Div, 5, -12);
             $display("5 * -12=%d", dut.getResult());
-            //state <= state + 1;
+            state2 <= False;
+            state3 <= True;
         endrule
 
-        rule stateAdd(state == 'h3);
+        rule stateAdd(state3);
             $display("Testing Multiplication:");
             dut.setupCalculation(Add, 5, 12);
             $display("5 * 12=%d", dut.getResult());
             dut.setupCalculation(Add, 5, -12);
             $display("5 * -12=%d", dut.getResult());
-            //state <= state + 1;
+            state3 <= False;
+            state4 <= True;
         endrule
 
-        rule stateSub(state == 'h4);
+        rule stateSub(state4);
             $display("Testing Multiplication:");
             dut.setupCalculation(Sub, 5, 12);
             $display("5 * 12=%d", dut.getResult());
             dut.setupCalculation(Sub, 5, -12);
             $display("5 * -12=%d", dut.getResult());
-            //state <= state + 1;
+            state4 <= False;
+            state5 <= True;
         endrule
 
-        rule stateAnd(state == 'h5);
+        rule stateAnd(state5);
             $display("Testing Multiplication:");
             dut.setupCalculation(And, 5, 12);
             $display("5 * 12=%d", dut.getResult());
             dut.setupCalculation(And, 5, -12);
             $display("5 * -12=%d", dut.getResult());
-            //state <= state + 1;
+            state5 <= False;
+            state6 <= True;
         endrule
 
-        rule stateOr(state == 'h6);
+        rule stateOr(state6);
             $display("Testing Multiplication:");
             dut.setupCalculation(Or, 5, 12);
             $display("5 * 12=%d", dut.getResult());
             dut.setupCalculation(Or, 5, -12);
             $display("5 * -12=%d", dut.getResult());
-            //state <= state + 1;
+            state6 <= False;
+            state7 <= True;
         endrule
 
-        rule finishState(state == 'h7);
+        rule finishState(state7);
             $display("testbench finished");
             $finish();
         endrule
