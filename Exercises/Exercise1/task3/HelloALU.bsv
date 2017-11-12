@@ -56,7 +56,52 @@ typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
             state <= state + 1;
         endrule
 
-        rule finishState (state == 2);
+        rule stateDiv (state == 2);
+            $display("Testing Multiplication:");
+            dut.setupCalculation(Div, 5, 12);
+            $display("5 * 12=%d", dut.getResult());
+            dut.setupCalculation(Div, 5, -12);
+            $display("5 * -12=%d", dut.getResult());
+            state <= state + 1;
+        endrule
+
+        rule stateAdd (state == 3);
+            $display("Testing Multiplication:");
+            dut.setupCalculation(Add, 5, 12);
+            $display("5 * 12=%d", dut.getResult());
+            dut.setupCalculation(Add, 5, -12);
+            $display("5 * -12=%d", dut.getResult());
+            state <= state + 1;
+        endrule
+
+        rule stateSub (state == 4);
+            $display("Testing Multiplication:");
+            dut.setupCalculation(Sub, 5, 12);
+            $display("5 * 12=%d", dut.getResult());
+            dut.setupCalculation(Sub, 5, -12);
+            $display("5 * -12=%d", dut.getResult());
+            state <= state + 1;
+        endrule
+
+        rule stateAnd (state == 5);
+            $display("Testing Multiplication:");
+            dut.setupCalculation(And, 5, 12);
+            $display("5 * 12=%d", dut.getResult());
+            dut.setupCalculation(And, 5, -12);
+            $display("5 * -12=%d", dut.getResult());
+            state <= state + 1;
+        endrule
+
+        rule stateOr (state == 6);
+            $display("Testing Multiplication:");
+            dut.setupCalculation(Or, 5, 12);
+            $display("5 * 12=%d", dut.getResult());
+            dut.setupCalculation(Or, 5, -12);
+            $display("5 * -12=%d", dut.getResult());
+            state <= state + 1;
+        endrule
+
+        rule finishState (state == 7);
             $display("testbench finished");
             $finish();
         endrule
