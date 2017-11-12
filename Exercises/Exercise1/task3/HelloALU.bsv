@@ -5,7 +5,7 @@ typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
     interface HelloALU;
         method Action   setupCalculation(AluOps op, Int#(32) a, Int#(32) b);
         method ActionValue#(Int#(32))   getResult();
-    endinterface;
+    endinterface
 
     module mkSimpleALU(HelloALU);
         Reg#(AluOps)    operation       <- mkRegU;
@@ -61,7 +61,7 @@ typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
         endrule
 
         rule state0_Mult (!flush && (state == 0) );
-            
+
             flush           <= True;
             state           <= state + 1;
         endrule
@@ -71,4 +71,4 @@ typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
             $finish();
         endrule
     endmodule
-endpackage;
+endpackage
