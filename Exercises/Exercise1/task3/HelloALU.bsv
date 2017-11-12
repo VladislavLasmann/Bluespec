@@ -47,6 +47,11 @@ typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
         HelloALU        dut        <- mkSimpleALU;
         Reg#(UInt#(8))  state      <- mkReg(1);
 
+        rule aaa;
+            $display("bullshit!");
+            $finish();
+        endrule
+
         rule stateMult (state == 0);
             $display("Testing Multiplication:");
             dut.setupCalculation(Mul, 5, 12);
