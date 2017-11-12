@@ -3,5 +3,5 @@ package HelloBluespec;
         rule helloDisplay;
             $display("(%0d) Hello World!", $time);
         endrule
-    endmodule;
+    endmodule
 endpackage
