@@ -49,7 +49,6 @@ typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
 
         rule printState;
             $display("State: %d", state);
-            state <= 1;
         endrule
 
         rule stateMult(state == 1);
@@ -110,9 +109,5 @@ typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
             $display("testbench finished");
             $finish();
         endrule
-
-        method ActionValue#(int) getNextState;
-            return state + 1;
-        endmethod
     endmodule
 endpackage
