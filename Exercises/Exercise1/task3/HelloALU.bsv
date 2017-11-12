@@ -16,17 +16,6 @@ typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
         Reg#(Int#(32))  secondOperand   <- mkReg(0);
         Reg#(Int#(32))  result          <- mkReg(0);
 
-        method Action   setupCalculation(AluOps op, Int#(32) a, Int#(32) b) if( !resultCalculated ) ;
-            firstOperand    <= a;
-            secondOperand   <= b;
-            operation       <= op;
-            gotNewOperation <= True;
-        endmethod
-
-        method ActionValue#(Int#(32)) getResult() if (resultCalculated);
-            return result;
-        endmethod
-
         rule calculate ( gotNewOperation );
             Int#(32) ruleResult = 0;
             case(operation)
@@ -41,6 +30,17 @@ typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
             gotNewOperation <= False;
             resultCalculated<= True;
         endrule
+
+        method Action   setupCalculation(AluOps op, Int#(32) a, Int#(32) b) if( !resultCalculated ) ;
+            firstOperand    <= a;
+            secondOperand   <= b;
+            operation       <= op;
+            gotNewOperation <= True;
+        endmethod
+
+        method ActionValue#(Int#(32)) getResult() if (resultCalculated);
+            return result;
+        endmethod
     endmodule
 
     module mkTestbench(Empty);
