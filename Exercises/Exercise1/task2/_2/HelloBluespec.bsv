@@ -5,7 +5,7 @@ package HelloBluespec;
 
     module mkHelloBluespec(HelloBluespec);
         Reg#(UInt#(25)) counter         <- mkReg(0);
-        Reg#Bool        ledState        <- mkReg(False);
+        Reg#(Bool)        ledState      <- mkReg(False);
 
         rule count;
             if ( counter == 'h1ffffff)  begin
