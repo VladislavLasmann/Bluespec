@@ -3,7 +3,7 @@ package HelloBluespec;
         method Bool led();
     endinterface
 
-    module mkHelloBluespec(Empty);
+    module mkHelloBluespec(HelloBluespec);
         Reg#(UInt#(25)) counter         <- mkReg(0);
 
         rule count( msb(counter) != 'h1ffffff);

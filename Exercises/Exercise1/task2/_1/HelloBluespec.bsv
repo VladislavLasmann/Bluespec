@@ -1,5 +1,5 @@
 package HelloBluespec;
-    module mkHelloBluespec(HelloBluespec);
+    module mkHelloBluespec(Empty);
         Reg#(UInt#(25)) counter         <- mkReg(0);
 
         rule count( msb(counter) != 'h1ffffff);
