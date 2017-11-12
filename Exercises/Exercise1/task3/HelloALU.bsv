@@ -49,10 +49,14 @@ typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
 
         rule printState;
             $display("State: %d", state);
-            state <= state +1;
+            state <= 1;
         endrule
 
-        rule stateMult (state == 1);
+        method ActionValue#(UInt#(8)) getNextState;
+            return state + 1;
+        endmethod
+
+        rule stateMult(state == 1);
             $display("Testing Multiplication:");
             dut.setupCalculation(Mul, 5, 12);
             $display("5 * 12=%d", dut.getResult());
@@ -61,7 +65,7 @@ typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
             //state <= state + 1;
         endrule
 
-        rule stateDiv (state == 2);
+        rule stateDiv(state == 2);
             $display("Testing Multiplication:");
             dut.setupCalculation(Div, 5, 12);
             $display("5 * 12=%d", dut.getResult());
@@ -70,7 +74,7 @@ typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
             //state <= state + 1;
         endrule
 
-        rule stateAdd (state == 3);
+        rule stateAdd(state == 3);
             $display("Testing Multiplication:");
             dut.setupCalculation(Add, 5, 12);
             $display("5 * 12=%d", dut.getResult());
@@ -79,7 +83,7 @@ typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
             //state <= state + 1;
         endrule
 
-        rule stateSub (state == 4);
+        rule stateSub(state == 4);
             $display("Testing Multiplication:");
             dut.setupCalculation(Sub, 5, 12);
             $display("5 * 12=%d", dut.getResult());
@@ -88,7 +92,7 @@ typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
             //state <= state + 1;
         endrule
 
-        rule stateAnd (state == 5);
+        rule stateAnd(state == 5);
             $display("Testing Multiplication:");
             dut.setupCalculation(And, 5, 12);
             $display("5 * 12=%d", dut.getResult());
@@ -97,7 +101,7 @@ typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
             //state <= state + 1;
         endrule
 
-        rule stateOr (state == 6);
+        rule stateOr(state == 6);
             $display("Testing Multiplication:");
             dut.setupCalculation(Or, 5, 12);
             $display("5 * 12=%d", dut.getResult());
@@ -106,7 +110,7 @@ typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
             //state <= state + 1;
         endrule
 
-        rule finishState (state == 7);
+        rule finishState(state == 7);
             $display("testbench finished");
             $finish();
         endrule
