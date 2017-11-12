@@ -6,7 +6,7 @@ package HelloBluespec;
             counter <= counter + 1;
         endrule
 
-        rule helloDisplay (readyDisplay) ;
+        rule helloDisplay ( msb(counter) == 1);
             $display("(%0d) Hello World!", $time);
             counter         <= 0;
         endrule
