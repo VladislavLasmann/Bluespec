@@ -35,7 +35,7 @@ package HelloBluespec;
                 counter <= counter + 1;
         endrule
 
-        rule (counter == 200000000 );
+        rule endTestbench (counter == 200000000 );
             $finish(0);
         endrule
     endmodule
