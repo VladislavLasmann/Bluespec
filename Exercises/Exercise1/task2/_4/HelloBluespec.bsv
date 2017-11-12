@@ -41,9 +41,9 @@ package HelloBluespec;
                 $display("LED an.");
             else
                 $display("LED aus.");
-            
+
             lastState <= hello.led();
-        endrule;
+        endrule
 
 
         rule endTestbench (counter == 200000000 );
