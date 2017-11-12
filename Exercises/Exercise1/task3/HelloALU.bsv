@@ -48,7 +48,7 @@ typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
         Reg#(UInt#(8))  state      <- mkReg(1);
 
         rule printState;
-            %display("State: %d", state);
+            $display("State: %d", state);
         endrule
 
         rule stateMult (state == 1);
