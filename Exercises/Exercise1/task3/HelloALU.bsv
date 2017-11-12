@@ -45,7 +45,7 @@ typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
 
     module mkTestbench(Empty);
         HelloALU        dut        <- mkSimpleALU;
-        Reg#(UInt#(8))  state      <- mkReg(0);
+        Reg#(int))      state      <- mkReg(0);
 
         rule printState;
             $display("State: %d", state);
@@ -111,7 +111,7 @@ typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
             $finish();
         endrule
 
-        method ActionValue#(UInt#(8)) getNextState;
+        method ActionValue#(int) getNextState;
             return state + 1;
         endmethod
     endmodule
