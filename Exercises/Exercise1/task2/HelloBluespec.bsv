@@ -3,7 +3,7 @@ package HelloBluespec;
         Reg#(UInt#(25)) counter         <- mkReg(0);
         Reg#(Bool)      readyDisplay    <- mkReg(False);
 
-        rule count( !readyDisplay && counter < maxCounter);
+        rule count( !readyDisplay && msb(counter) = 0);
             counter <= counter + 1;
         endrule
 
