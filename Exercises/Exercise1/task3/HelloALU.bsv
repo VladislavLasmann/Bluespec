@@ -19,7 +19,7 @@ typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
         rule calculate ( gotNewOperation );
             Int#(32) ruleResult = 0;
             case(operation)
-                Mult:   ruleResult = firstOperand * secondOperand;
+                Mul:    ruleResult = firstOperand * secondOperand;
                 Div:    ruleResult = firstOperand / secondOperand;
                 Add:    ruleResult = firstOperand + secondOperand;
                 Sub:    ruleResult = firstOperand - secondOperand;
