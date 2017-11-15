@@ -13,7 +13,7 @@ module mkFSM(Empty);
 
     StmtFSM     myFSM  <- mkAutoFSM( myFirstFSM );
 
-    rule printHelloWorldEachHundredCycles:
+    rule printHelloWorldEachHundredCycles;
         myFSM.delay( 100 );
     endrule
 endmodule
