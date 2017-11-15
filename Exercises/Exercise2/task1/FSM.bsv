@@ -2,7 +2,7 @@ package FSM;
 
 import StmtFSM::*;
 
-module mkFSM;
+module mkFSM(Empty);
     Stmt myFirstFSM = {
         seq
             action
@@ -16,6 +16,5 @@ module mkFSM;
     rule printHelloWorldEachHundredCycles:
         myFSM.delay( 100 );
     endrule
-
 endmodule
 endpackage
