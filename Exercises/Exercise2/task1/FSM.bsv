@@ -7,8 +7,8 @@ module mkFSM(Empty);
         seq
             action
                 $display("Hello World.");
-                delay(100);
             endaction
+            delay(100);
         endseq
     };
     
