@@ -7,7 +7,7 @@ module mkFSM(Empty);
         seq
             delay(100);
             action
-                $display("(%d): Hello World.", $time);
+                $display("(%0d): Hello World.", $time);
             endaction
         endseq
     };
