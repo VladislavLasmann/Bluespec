@@ -7,14 +7,11 @@ module mkFSM(Empty);
         seq
             action
                 $display("Hello World.");
+                delay(100);
             endaction
         endseq
     };
-
-    AutoFSM     myFSM  <- mkAutoFSM( myFirstFSM );
-
-    rule printHelloWorldEachHundredCycles;
-        myFSM.delay( 100 );
-    endrule
+    
+    mkAutoFSM( myFirstFSM );
 endmodule
 endpackage
