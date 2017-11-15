@@ -5,10 +5,10 @@ import StmtFSM::*;
 module mkFSM(Empty);
     Stmt myFirstFSM = {
         seq
-            action
-                $display("Hello World.");
-            endaction
             delay(100);
+            action
+                $display("(%d): Hello World.", $time);
+            endaction
         endseq
     };
     
