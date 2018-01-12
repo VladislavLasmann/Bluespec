@@ -1,2 +1,0 @@
-Bluespec Calculator
-===================

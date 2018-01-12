@@ -1,7 +1,7 @@
 package HelloBluespec;
     module mkHelloBluespec(Empty);
         rule helloDisplay;
-            $display("(%0d) Hello World!", $time);
+            $display("(&0d) Hello World!", $time);
         endrule
     endmodule
-endpackage
+endpackage: HelloBluespec
