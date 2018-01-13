@@ -1,4 +1,4 @@
-package: ALU;
+package ALU;
 
     typedef enum{Mul, Div, Add, Sub, And, Or} AluOps deriving (Eq, Bits);
 
