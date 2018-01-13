@@ -34,7 +34,16 @@ package Blinky;
         // f = 100MHz , T = 1/f  => T = 1*10^(-8)s
         // Testbench should run 2s, so required bits for counter:
         // (2*1*10^8)_10 = (BEBC200)_16 => 7*4Bits => 28 Bits
-        Reg #(UInt #(28)) counter <- mkReg(0);
+        Reg #(UInt #(28))   counter <- mkReg(0);
+        Reg #(Bool)         ledStatus <- mkReg(False);
+
+        rule updateLedStatus if(blinky.led() != ledStatus );
+            ledStatus <= blinky.led();
+            if( blinky.led() )
+                $dislay("LED an");
+            else
+                $display("LED aus");
+        endrule;
 
         rule count;
             counter <= counter + 1;
