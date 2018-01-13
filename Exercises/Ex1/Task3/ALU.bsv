@@ -51,7 +51,7 @@ package ALU;
 
     module mkTestbench(Empty);
         ALU_ifc alu <- mkALU;
-        Reg#(UInt(4)) testState <- mkReg(0);
+        Reg#(UInt#(4)) testState <- mkReg(0);
 
         rule checkMul (testState == 0);
             alu.setupCalculation(Mul, 4, 5);
