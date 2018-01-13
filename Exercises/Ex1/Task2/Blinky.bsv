@@ -1,10 +1,10 @@
 package Blinky;
 
-    interface HelloBluespec;
+    interface Blinky_ifc;
         (* always_enabled, always_ready *) method Bool led();
     endinterface
 
-    module mkBlinky(HelloBluespec);
+    module mkBlinky(Blinky_ifc);
         Reg #(UInt #(25))   counter     <- mkReg(0);
         Reg #(Bool)         ledStatus   <- mkReg(False);
 
@@ -30,7 +30,7 @@ package Blinky;
     endmodule: mkBlinky
 
     module mkTestbench(Empty);
-        Blinky blinky <- mkBlinky;
+        Blinky_ifc blinky <- mkBlinky;
         // f = 100MHz , T = 1/f  => T = 1*10^(-8)s
         // Testbench should run 2s, so required bits for counter:
         // (2*1*10^8)_10 = (BEBC200)_16 => 7*4Bits => 28 Bits
