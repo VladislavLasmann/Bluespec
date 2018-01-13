@@ -40,7 +40,7 @@ package Blinky;
         rule updateLedStatus if(blinky.led() != ledStatus );
             ledStatus <= blinky.led();
             if( blinky.led() )
-                $dislay("LED an");
+                $display("LED an");
             else
                 $display("LED aus");
         endrule
