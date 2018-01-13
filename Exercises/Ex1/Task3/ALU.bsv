@@ -51,47 +51,48 @@ package ALU;
 
     module mkTestbench(Empty);
         ALU_ifc alu <- mkALU;
-        Reg#(UInt#(4)) testState <- mkReg(0);
+        Reg#(UInt#(3)) testState <- mkReg(0);
+        Reg#(Bool) printResult <- mkReg(False);
 
         rule checkMul (testState == 0);
             alu.setupCalculation(Mul, 4, 5);
             $display("%d * %d", 4, 5);
-            testState <= testState + 1;
+            printResult <= ! printResult;
         endrule
-        rule checkDiv (testState == 2);
+        rule checkDiv (testState == 1);
             alu.setupCalculation(Div, -10, 5);
             $display("%d / %d", -10, 5);
-            testState <= testState + 1;
+            printResult <= ! printResult;
         endrule
-        rule checkAdd (testState == 4);
+        rule checkAdd (testState == 2);
             alu.setupCalculation(Add, -3, 5);
             $display("%d + %d", -3, 5);
-            testState <= testState + 1;
+            printResult <= ! printResult;
         endrule
-        rule checkSub (testState == 6);
+        rule checkSub (testState == 3);
             alu.setupCalculation(Sub, 4, 5);
             $display("%d - %d", 4, 5);
-            testState <= testState + 1;
+            printResult <= ! printResult;
         endrule
-        rule checkAnd (testState == 8);
+        rule checkAnd (testState == 4);
             alu.setupCalculation(And, 4, 5);
             $display("%d & %d", 4, 5);
-            testState <= testState + 1;
+            printResult <= ! printResult;
         endrule
-        rule checkOr (testState == 10);
+        rule checkOr (testState == 5);
             alu.setupCalculation(Or, 4, 5);
             $display("%d | %d", -1, 5);
-            testState <= testState + 1;
+            printResult <= ! printResult;
         endrule
         rule printResult;
             $display("= %d", alu.getResult());
             testState <= testState + 1;
+            printResult <= ! printResult;
         endrule
-        rule finish (testState == 1);
+        rule finish (testState == 6);
             $display("Test finished...");
             $finish();
         endrule
-        
     
     endmodule: mkTestbench
 endpackage: ALU
