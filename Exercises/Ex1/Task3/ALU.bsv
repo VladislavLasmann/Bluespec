@@ -41,13 +41,11 @@ package ALU;
         method ActionValue #(Int #(32)) getResult();
             if( calculated)
             begin
-                return result;
                 result <= 0;
                 valuesSet <= True;
                 calculated <= False;
             end
-            else
-                return 0;
+            return result;
         endmethod
     endmodule: mkALU
 
