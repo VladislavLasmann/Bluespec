@@ -84,7 +84,7 @@ package ALU;
             $display("%d | %d", -1, 5);
             printResult <= ! printResult;
         endrule
-        rule printResult;
+        rule printResultRule (printResult);
             $display("= %d", alu.getResult());
             testState <= testState + 1;
             printResult <= ! printResult;
