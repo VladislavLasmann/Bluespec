@@ -57,37 +57,37 @@ package ALU;
         rule checkMul (testState == 0);
             alu.setupCalculation(Mul, 4, 5);
             $display("%d * %d", 4, 5);
-            printResult <= ! printResult;
+            printResult <= True;
         endrule
         rule checkDiv (testState == 1);
             alu.setupCalculation(Div, -10, 5);
             $display("%d / %d", -10, 5);
-            printResult <= ! printResult;
+            printResult <= True;
         endrule
         rule checkAdd (testState == 2);
             alu.setupCalculation(Add, -3, 5);
             $display("%d + %d", -3, 5);
-            printResult <= ! printResult;
+            printResult <= True;
         endrule
         rule checkSub (testState == 3);
             alu.setupCalculation(Sub, 4, 5);
             $display("%d - %d", 4, 5);
-            printResult <= ! printResult;
+            printResult <= True;
         endrule
         rule checkAnd (testState == 4);
             alu.setupCalculation(And, 4, 5);
             $display("%d & %d", 4, 5);
-            printResult <= ! printResult;
+            printResult <= True;
         endrule
         rule checkOr (testState == 5);
             alu.setupCalculation(Or, 4, 5);
             $display("%d | %d", -1, 5);
-            printResult <= ! printResult;
+            printResult <= True;
         endrule
         rule printResultRule (printResult);
             $display("= %d", alu.getResult());
             testState <= testState + 1;
-            printResult <= ! printResult;
+            printResult <= False;
         endrule
         rule finish (testState == 6);
             $display("Test finished...");
