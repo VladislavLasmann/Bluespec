@@ -54,32 +54,32 @@ package ALU;
         Reg#(UInt#(3)) testState <- mkReg(0);
         Reg#(Bool) printResult <- mkReg(False);
 
-        rule checkMul (testState == 0);
+        rule checkMul (testState == 0 && !printResult);
             alu.setupCalculation(Mul, 4, 5);
             $display("%d * %d", 4, 5);
             printResult <= True;
         endrule
-        rule checkDiv (testState == 1);
+        rule checkDiv (testState == 1 && !printResult);
             alu.setupCalculation(Div, -10, 5);
             $display("%d / %d", -10, 5);
             printResult <= True;
         endrule
-        rule checkAdd (testState == 2);
+        rule checkAdd (testState == 2 && !printResult);
             alu.setupCalculation(Add, -3, 5);
             $display("%d + %d", -3, 5);
             printResult <= True;
         endrule
-        rule checkSub (testState == 3);
+        rule checkSub (testState == 3 && !printResult);
             alu.setupCalculation(Sub, 4, 5);
             $display("%d - %d", 4, 5);
             printResult <= True;
         endrule
-        rule checkAnd (testState == 4);
+        rule checkAnd (testState == 4) && !printResult;
             alu.setupCalculation(And, 4, 5);
             $display("%d & %d", 4, 5);
             printResult <= True;
         endrule
-        rule checkOr (testState == 5);
+        rule checkOr (testState == 5) && !printResult;
             alu.setupCalculation(Or, 4, 5);
             $display("%d | %d", -1, 5);
             printResult <= True;
@@ -89,7 +89,7 @@ package ALU;
             testState <= testState + 1;
             printResult <= False;
         endrule
-        rule finish (testState == 6);
+        rule finish (testState == 6 && !printResult);
             $display("Test finished...");
             $finish();
         endrule
