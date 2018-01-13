@@ -74,12 +74,12 @@ package ALU;
             $display("%d - %d", 4, 5);
             printResult <= True;
         endrule
-        rule checkAnd (testState == 4) && !printResult;
+        rule checkAnd (testState == 4 && !printResult );
             alu.setupCalculation(And, 4, 5);
             $display("%d & %d", 4, 5);
             printResult <= True;
         endrule
-        rule checkOr (testState == 5) && !printResult;
+        rule checkOr (testState == 5 && !printResult);
             alu.setupCalculation(Or, 4, 5);
             $display("%d | %d", -1, 5);
             printResult <= True;
