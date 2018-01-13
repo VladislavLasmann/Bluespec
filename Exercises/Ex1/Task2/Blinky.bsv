@@ -43,7 +43,7 @@ package Blinky;
                 $dislay("LED an");
             else
                 $display("LED aus");
-        endrule;
+        endrule
 
         rule count;
             counter <= counter + 1;
