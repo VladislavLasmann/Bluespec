@@ -24,7 +24,7 @@ package Blinky;
         endrule
 
         method Bool led();
-            return led;
+            return ledStatus;
         endmethod
 
     endmodule: mkBlinky
