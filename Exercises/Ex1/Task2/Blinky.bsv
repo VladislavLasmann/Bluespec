@@ -30,7 +30,7 @@ package Blinky;
     endmodule: mkBlinky
 
     module mkTestbench(Empty);
-        Blinky blinky <- mkBlinky();
+        Blinky blinky <- mkBlinky;
         // f = 100MHz , T = 1/f  => T = 1*10^(-8)s
         // Testbench should run 2s, so required bits for counter:
         // (2*1*10^8)_10 = (BEBC200)_16 => 7*4Bits => 28 Bits
