@@ -4,7 +4,7 @@ package Blinky;
 
 
         // increments the counter every tact
-        rule counter (counter != 25'h1FFFFFFFF);
+        rule counterRule (counter != 25'h1FFFFFFFF);
             counter <= counter + 1;
         endrule
 
