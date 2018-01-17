@@ -30,7 +30,7 @@ module mkShifter (Shifter_Ifc);
         rg_y1 <= y0;
 
         // Stufe 1
-        if (rg_x1 matched tagged Valid .x1)
+        if (rg_x1 matches tagged Valid .x1)
             rg_x2 <= tagged Valid ((rg_y1 [1] == 0)? x1 : (x1 << 2));
         else
             rg_x2 <= tagged Invalid;
