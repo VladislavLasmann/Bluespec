@@ -1,4 +1,4 @@
-import GetPut::*
+import GetPut::*;
 
 interface PairAverage;
     interface Put#(int) data_in;
