@@ -30,7 +30,7 @@ module mkShifter (Shifter_Ifc);
 
         // Stufe 2
         fifo_out_z.enq( ((rg_y2[2] == 0) ? rg_x2 : (rg_x2 << 4)) );
-    endrule;
+    endrule
 
     interface put_x = toPut (fifo_in_x);
     interface put_y = toPut (fifo_in_y);
