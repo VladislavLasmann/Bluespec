@@ -38,7 +38,7 @@ module mkShifter (Shifter_Ifc);
 
         // Stufe 2
         if (rg_x2 matches tagged Valid .x2)
-            fifo_out_z.enq( ((rg_y2[2] == 0) ? rg_x2 : (rg_x2 << 4)) );
+            fifo_out_z.enq( ((rg_y2[2] == 0) ? x2 : (x2 << 4)) );
     endrule
 
     interface put_x = toPut (fifo_in_x);
