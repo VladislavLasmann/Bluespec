@@ -1,4 +1,5 @@
 import GetPut :: *;
+import FIFOF :: *;
 
 interface Shifter_Ifc;
     interface Put #(Bit #(8)) put_x;
