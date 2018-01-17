@@ -11,11 +11,11 @@ module mkShifter (Shifter_Ifc);
     FIFOF #(Bit #(3)) fifo_in_y <- mkFIFOF;
     FIFOF #(Bit #(8)) fifo_out_z <- mkFIFOF;
 
-    Reg #(Bit (8)) rg_x1 <- mkRegU;
-    Reg #(Bit (3)) rg_y1 <- mkRegU;
+    Reg #(Bit #(8)) rg_x1 <- mkRegU;
+    Reg #(Bit #(3)) rg_y1 <- mkRegU;
 
-    Reg #(Bit (8)) rg_x2 <- mkRegU;
-    Reg #(Bit (3)) rg_y2 <- mkRegU;
+    Reg #(Bit #(8)) rg_x2 <- mkRegU;
+    Reg #(Bit #(3)) rg_y2 <- mkRegU;
 
     rule rl_all_together;
         // Stufe 0
