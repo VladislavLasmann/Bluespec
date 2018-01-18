@@ -46,7 +46,7 @@ package FSM;
                     seq
                         $display("(%0d) Iteration %d", $time, i);
                     endseq
-                    $finish();
+                $finish();
             endseq
         };
 
@@ -54,7 +54,7 @@ package FSM;
         rule startFSM(myFSM.done());
             myFSM.start();
         endrule
-        
+
     endmodule: mkThirdFSM
 
 
