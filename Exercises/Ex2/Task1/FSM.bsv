@@ -11,7 +11,7 @@ package FSM;
                     $display("[1] (%0d) Hello World", $time);
                     seq1Cnt <= seq1Cnt + 1;
                     if(seq1Cnt == 99)
-                        $finish();
+                        seq1Val <= True;
                 endseq
 
                 seq
