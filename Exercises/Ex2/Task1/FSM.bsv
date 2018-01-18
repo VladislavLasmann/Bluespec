@@ -24,7 +24,7 @@ package FSM;
             endpar
         };
         mkAutoFSM(fsm_Stmt);
-    endmodule: mkFirstFSM
+    endmodule: mkSecondFSM
 
     module mkThirdFSM(Empty);
         Reg#(Uint#(12)) counter <- mkReg(0);
@@ -56,6 +56,5 @@ package FSM;
         endrule
 
     endmodule: mkThirdFSM
-
 
 endpackage: FSM
