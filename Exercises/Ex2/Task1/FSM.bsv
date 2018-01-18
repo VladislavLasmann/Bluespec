@@ -8,10 +8,13 @@ package FSM;
         Stmt fsm_Stmt = {
             par
                 seq
-                    $display("[1] (%0d) Hello World", $time);
-                    seq1Cnt <= seq1Cnt + 1;
-                    if(seq1Cnt == 99)
-                        seq1Val <= True;
+                    if( ! seq1Val )
+                    begin
+                        $display("[1] (%0d) Hello World", $time);
+                        seq1Cnt <= seq1Cnt + 1;
+                        if(seq1Cnt == 99)
+                            seq1Val <= True;
+                    end
                 endseq
 
                 seq
