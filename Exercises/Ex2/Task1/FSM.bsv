@@ -38,7 +38,7 @@ package FSM;
         rule resetCount (counter == 99);
             counter <= 0;
             pw.send();
-        endrule;
+        endrule
 
         Stmt thirdStmt = {
             seq 
