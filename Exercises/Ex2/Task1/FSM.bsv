@@ -26,7 +26,7 @@ package FSM;
     endmodule: mkSecondFSM
 
     module mkThirdFSM(Empty);
-        Reg#(Uint#(12)) counter <- mkReg(0);
+        Reg#(UInt#(12)) counter <- mkReg(0);
         PulseWire        pw <- mkPulseWire();
         Reg#(UInt#(12)) i <- mkReg(0);
 
