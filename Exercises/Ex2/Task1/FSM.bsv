@@ -10,7 +10,7 @@ package FSM;
                 endaction
             endseq
         };
-        mkAutoFSM(FSM_Stmt);
+        mkAutoFSM(fsm_Stmt);
     endmodule: mkFirstFSM
 
 endpackage: FSM
