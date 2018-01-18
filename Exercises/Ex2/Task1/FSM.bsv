@@ -2,7 +2,7 @@ package FSM;
     import StmtFSM::*;
 
     module mkFirstFSM(Empty);
-        Stmt FSM_Stmt = {
+        Stmt fsm_Stmt = {
             seq
                 delay(100);
                 action
