@@ -1,6 +1,5 @@
 package FSM;
     import StmtFSM::*;
-    import PulseWire::*;
 
     module mkSecondFSM(Empty);
         Reg#(Bool)      seq1Val <- mkReg(False);
