@@ -3,8 +3,8 @@ package FSM;
 
     module mkFirstFSM(Empty);
         Stmt fsm_Stmt = {
-            Reg#(Bool)      seq1Val <- mkReg(False);
-            Reg#(UInt#(8))  seq1Cnt <- mkReg(0);
+            Reg #(Bool)      seq1Val <- mkReg(False);
+            Reg #(UInt#(8))  seq1Cnt <- mkReg(0);
             par
                 seq
                     $display("[1] (%0d) Hello World", $time);
