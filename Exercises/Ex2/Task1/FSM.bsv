@@ -51,7 +51,7 @@ package FSM;
         };
 
         FSM myFSM <- mkFSMWithPred(thirdStmt, pw);
-        rule startFSM(myFSM.done());
+        rule startFSM ( myFSM.done() );
             myFSM.start();
         endrule
 
