@@ -1,7 +1,8 @@
 package FSM;
     import StmtFSM::*;
+    import PulseWire::*;
 
-    module mkFirstFSM(Empty);
+    module mkSecondFSM(Empty);
         Reg#(Bool)      seq1Val <- mkReg(False);
 
         Stmt fsm_Stmt = {
@@ -24,5 +25,37 @@ package FSM;
         };
         mkAutoFSM(fsm_Stmt);
     endmodule: mkFirstFSM
+
+    module mkThirdFSM(Empty);
+        Reg#(Uint#(12)) counter <- mkReg(0);
+        PulseWire        pw <- mkPulseWire();
+        Reg#(UInt#(12)) i <- mkReg(0);
+
+        rule count (counter < 99 );
+            counter <= counter + 1;
+        endrule 
+
+        rule resetCount (counter == 99);
+            counter <= 0;
+            pw.send();
+        enrule;
+
+        Stmt thirdStmt = {
+            seq 
+                for( i <= 0; i < 20; i <= i + 1)
+                    seq
+                        $display("(%0d) Iteration %d", $time, i);
+                    endseq
+                    $finish();
+            endseq
+        };
+
+        FSM myFSM <- mkFSMWithPred(thirdStmt, pw);
+        rule startFSM(myFSM.done());
+            myFSM.start();
+        endrule
+        
+    endmodule: mkThirdFSM
+
 
 endpackage: FSM
