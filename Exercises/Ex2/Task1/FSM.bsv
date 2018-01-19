@@ -138,7 +138,7 @@ package FSM;
                     let currentData = testVector[indexCounter];
                     alu.setupCalculation(currentData.operator, currentData.opA, currentData.opB);
                 endaction
-                delay(10);
+                delay(1);
                 action
                     let currentData = testVector[indexCounter];
                     let result <- alu.getResult();
