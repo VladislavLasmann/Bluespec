@@ -135,13 +135,11 @@ package FSM;
         Stmt checkStmt = {
             seq
                 action
-                    seq
                     let currentData = testVector[indexCounter];
                     alu.setupCalculation(currentData.operator, currentData.opA, currentData.opB);
-                    endseq
                 endaction
                 action
-                    seq
+                    delay(10);
                     let currentData = testVector[indexCounter];
                     let result <- alu.getResult();
                     let print = $format("Calculation: %d", currentData.opA) +
@@ -152,7 +150,6 @@ package FSM;
                     end else begin
                         $display("Result incorrect: %d != %d", result, currentData.expectedResult);
                     end
-                    endseq
                 endaction
             endseq
         };
