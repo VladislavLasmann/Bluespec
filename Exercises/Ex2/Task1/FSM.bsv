@@ -44,6 +44,7 @@ package FSM;
             number2 <= b;
             operation <= op;
             readyForCalculation <= True;
+            validResult <= False;
         endmethod: setupCalculation
 
         method ActionValue #(Int#(32)) getResult();
