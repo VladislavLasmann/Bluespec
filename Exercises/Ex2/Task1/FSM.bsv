@@ -110,8 +110,8 @@ package FSM;
 
     module testBenchFSM(Empty);
         Reg #(UInt#(32)) indexCounter <- mkReg(0);
-        Vector#(18, TestData) testVector();
-        HelloALU alu <- mkHelloALU;
+        Vector#(18, TestData) testVector;
+        HelloALU alu <- mkHelloALU();
         testVector[0] = TestData{opA:-3 , opB:5 , operator: Mul, expectedResult:-15 };
         testVector[1] = TestData{opA:0 , opB:5 , operator: Mul, expectedResult:0 };
         testVector[1] = TestData{opA:3 , opB:5 , operator: Mul, expectedResult:15 };
