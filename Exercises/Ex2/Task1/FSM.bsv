@@ -33,7 +33,7 @@ package FSM;
                 Sub : tmpResult = number1 - number2;
                 And : tmpResult = number1 & number2;
                 Or  : tmpResult = number1 | number2;
-            endcase;
+            endcase
             vaidResult <= True;
             readyForCalculation <= False;
             result <= tmpResult;
@@ -161,7 +161,7 @@ package FSM;
                     checkFSM.waitTillDone();
                 endseq
             endseq
-        }
+        };
         mkAutoFSM(mainFSM);
 
     endmodule: testBenchFSM
