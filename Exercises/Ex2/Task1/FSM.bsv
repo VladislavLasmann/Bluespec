@@ -34,7 +34,7 @@ package FSM;
                 And : tmpResult = number1 & number2;
                 Or  : tmpResult = number1 | number2;
             endcase
-            vaidResult <= True;
+            validResult <= True;
             readyForCalculation <= False;
             result <= tmpResult;
         endrule: calculate
@@ -134,11 +134,11 @@ package FSM;
         Stmt checkStmt = {
             seq
                 action
-                    let currentData = myVector[indexCounter];
+                    let currentData = testVector[indexCounter];
                     alu.setupCalculation(currentData.operator, currentData.opA, currentData.opB);
                 endaction
                 action
-                    let currentData = myVector[indexCounter];
+                    let currentData = testVector[indexCounter];
                     let result <- alu.getResult();
                     let print = $format("Calculation: %d", currentData.opA) +
                                 fshow(currentData.operator) + $format("%d", currentData.opB);
