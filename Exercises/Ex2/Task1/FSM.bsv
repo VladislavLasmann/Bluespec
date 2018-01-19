@@ -110,7 +110,7 @@ package FSM;
 
     module testBenchFSM(Empty);
         Reg #(UInt#(32)) indexCounter <- mkReg(0);
-        Vector#(18, TestData) testVector;
+        Vector#(18, TestData) testVector();
         HelloALU alu <- mkHelloALU;
         testVector[0] = TestData{opA:-3 , opB:5 , operator: Mul, expectedResult:-15 };
         testVector[1] = TestData{opA:0 , opB:5 , operator: Mul, expectedResult:0 };
@@ -141,7 +141,7 @@ package FSM;
                     let currentData = testVector[indexCounter];
                     let result <- alu.getResult();
                     let print = $format("Calculation: %d", currentData.opA) +
-                                + $format("%d", currentData.opB);
+                                fshow(currentData.operator) + $format("%d", currentData.opB);
                     $display(print);
                     if(result == currentData.expectedResult) begin
                         $display("Result correct: %d", result);
