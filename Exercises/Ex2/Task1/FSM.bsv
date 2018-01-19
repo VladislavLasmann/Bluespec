@@ -141,7 +141,7 @@ package FSM;
                     let currentData = testVector[indexCounter];
                     let result <- alu.getResult();
                     let print = $format("Calculation: %d", currentData.opA) +
-                                fshow(currentData.operator) + $format("%d", currentData.opB);
+                                + $format("%d", currentData.opB);
                     $display(print);
                     if(result == currentData.expectedResult) begin
                         $display("Result correct: %d", result);
