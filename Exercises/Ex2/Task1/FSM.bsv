@@ -124,7 +124,7 @@ package FSM;
         testVector[8] = TestData{opA:3 , opB:-3 , operator: Add, expectedResult:0 };
         testVector[9] = TestData{opA:-3 , opB:-3 , operator: Sub, expectedResult:0 };
         testVector[10] = TestData{opA:0 , opB:3 , operator: Sub, expectedResult:-3 };
-        testVector[11] = TestData{opA:3 , opB:3 , operator: Sub, expectedResult:6 };
+        testVector[11] = TestData{opA:3 , opB:-3 , operator: Sub, expectedResult:6 };
         testVector[12] = TestData{opA:0 , opB:1 , operator: And, expectedResult:0 };
         testVector[13] = TestData{opA:3 , opB:3 , operator: And, expectedResult:3 };
         testVector[14] = TestData{opA:4 , opB:4 , operator: And, expectedResult:4 };
