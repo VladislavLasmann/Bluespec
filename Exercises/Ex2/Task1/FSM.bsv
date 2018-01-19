@@ -138,8 +138,8 @@ package FSM;
                     let currentData = testVector[indexCounter];
                     alu.setupCalculation(currentData.operator, currentData.opA, currentData.opB);
                 endaction
+                delay(10);
                 action
-                    delay(10);
                     let currentData = testVector[indexCounter];
                     let result <- alu.getResult();
                     let print = $format("Calculation: %d", currentData.opA) +
