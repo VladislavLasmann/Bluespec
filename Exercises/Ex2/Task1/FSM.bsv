@@ -114,7 +114,7 @@ package FSM;
         HelloALU alu <- mkHelloALU();
         testVector[0] = TestData{opA:-3 , opB:5 , operator: Mul, expectedResult:-15 };
         testVector[1] = TestData{opA:0 , opB:5 , operator: Mul, expectedResult:0 };
-        testVector[1] = TestData{opA:3 , opB:5 , operator: Mul, expectedResult:15 };
+        testVector[2] = TestData{opA:3 , opB:5 , operator: Mul, expectedResult:15 };
         testVector[3] = TestData{opA:-15 , opB:-3 , operator: Div, expectedResult:5 };
         testVector[4] = TestData{opA:0 , opB:3 , operator: Div, expectedResult:0 };
         testVector[5] = TestData{opA:15 , opB:3, operator: Div, expectedResult:5 };
