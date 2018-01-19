@@ -51,7 +51,7 @@ package FSM;
             return result;
         endmethod: getResult
 
-    endmodule: mkHelloALU;
+    endmodule: mkHelloALU
 
     module mkSecondFSM(Empty);
         Reg#(Bool)      seq1Val <- mkReg(False);
