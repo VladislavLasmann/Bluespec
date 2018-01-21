@@ -45,7 +45,7 @@ module mkALU(ALU_ifc);
         result <= tagged Unsigned tmpResult;
     endrule
 
-    function Bool isUnsigned(SignedOrUnsigned x);
+    function Bool isUnsigned(SignedOrUnsigned v);
         if(v matches tagged Unsigned .va)
             return True;
         else
