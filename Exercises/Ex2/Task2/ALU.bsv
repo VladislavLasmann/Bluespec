@@ -15,7 +15,7 @@ module mkALU(ALU_ifc);
     Reg#(Bool) readyForCalculation  <- mkReg(False);
     Reg#(Bool) calculated           <- mkReg(False);
 
-    rule calculateSigned (opA matches tagged Signed .va &&& opB matches tagged Signed .vb && readyForCalculation);
+    rule calculateSigned (opA matches tagged Signed .va &&& opB matches tagged Signed .vb &&& readyForCalculation);
         Int#(32) tmpResult = 0;
         case(operation)
             Mul: tmpResult = va * vb;
