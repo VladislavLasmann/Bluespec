@@ -94,11 +94,11 @@ module mkALUTestbench(Empty);
         testState <= testState + 1;
     endrule
     rule checkAnd (testState == 8);
-        uut.setupCalculation(And, tagged Unsigned 32’hA, tagged Unsigned 32’hA); 
+        uut.setupCalculation(And, tagged Unsigned 32'hA, tagged Unsigned 32'hA); 
         testState <= testState + 1;
     endrule
     rule checkOr (testState == 10);
-        uut.setupCalculation(Or, tagged Unsigned 32’hA, tagged Unsigned 32’hA); 
+        uut.setupCalculation(Or, tagged Unsigned 32'hA, tagged Unsigned 32'hA); 
         testState <= testState + 1;
     endrule
 
