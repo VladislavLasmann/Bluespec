@@ -71,7 +71,7 @@ module mkALU(ALU_ifc);
         calculated <= False;
         return result;
     endmethod
-module: mkALU
+endmodule: mkALU
 
 module mkALUTestbench(Empty);
     ALU_ifc  uut                <- mkALU();
