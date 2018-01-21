@@ -9,6 +9,7 @@ package FSM;
         AluOps      operator;
         Int#(32)    expectedResult;
     } TestData deriving (Eq, Bits);
+    typedef union tagged{UInt#(32) Unsigned; Int#(32) Signed;} SignedOrUnsigned deriving(Bits, Eq);
 
     interface HelloALU;
         method Action setupCalculation(AluOps op, Int#(32) a, Int#(32) b);
@@ -167,5 +168,64 @@ package FSM;
         mkAutoFSM(mainFSM);
 
     endmodule: testBenchFSM
+
+    module fifthFSM(Empty);
+        Reg #(UInt#(32)) indexCounter <- mkReg(0);
+        Vector#(18, TestData) testVector;
+        HelloALU alu <- mkHelloALU();
+        testVector[0] = TestData{opA:-3 , opB:5 , operator: Mul, expectedResult:-15 };
+        testVector[1] = TestData{opA:0 , opB:5 , operator: Mul, expectedResult:0 };
+        testVector[2] = TestData{opA:3 , opB:5 , operator: Mul, expectedResult:15 };
+        testVector[3] = TestData{opA:-15 , opB:-3 , operator: Div, expectedResult:5 };
+        testVector[4] = TestData{opA:0 , opB:3 , operator: Div, expectedResult:0 };
+        testVector[5] = TestData{opA:15 , opB:3, operator: Div, expectedResult:5 };
+        testVector[6] = TestData{opA:-3 , opB:-5 , operator: Add, expectedResult:-8 };
+        testVector[7] = TestData{opA:0 , opB:5 , operator: Add, expectedResult:5 };
+        testVector[8] = TestData{opA:3 , opB:-3 , operator: Add, expectedResult:0 };
+        testVector[9] = TestData{opA:-3 , opB:-3 , operator: Sub, expectedResult:0 };
+        testVector[10] = TestData{opA:0 , opB:3 , operator: Sub, expectedResult:-3 };
+        testVector[11] = TestData{opA:3 , opB:-3 , operator: Sub, expectedResult:6 };
+        testVector[12] = TestData{opA:0 , opB:1 , operator: And, expectedResult:0 };
+        testVector[13] = TestData{opA:3 , opB:3 , operator: And, expectedResult:3 };
+        testVector[14] = TestData{opA:4 , opB:4 , operator: And, expectedResult:4 };
+        testVector[15] = TestData{opA:1 , opB:0 , operator: Or, expectedResult:1 };
+        testVector[16] = TestData{opA:4 , opB:3 , operator: Or, expectedResult:7 };
+        testVector[17] = TestData{opA:0 , opB:0 , operator: Or, expectedResult:0 };
+
+        Stmt checkStmt = {
+            seq
+                action
+                    let currentData = testVector[indexCounter];
+                    alu.setupCalculation(currentData.operator, currentData.opA, currentData.opB);
+                endaction
+                delay(1);
+                action
+                    let currentData = testVector[indexCounter];
+                    let result <- alu.getResult();
+                    let print = $format("Calculation: %d", currentData.opA) +
+                                $format("%d", currentData.opB);
+                    $display(print);
+                    if(result == currentData.expectedResult) begin
+                        $display("Result correct: %d", result);
+                    end else begin
+                        $display("Result incorrect: %d != %d", result, currentData.expectedResult);
+                    end
+                endaction
+            endseq
+        };
+
+        FSM checkFSM <- mkFSM(checkStmt);
+        Stmt mainFSM = {
+            seq
+                for(indexCounter <= 0; indexCounter < 18; indexCounter <= indexCounter + 1)
+                seq
+                    checkFSM.start();
+                    checkFSM.waitTillDone();
+                endseq
+            endseq
+        };
+        mkAutoFSM(mainFSM);
+
+    endmodule: fifthFSM
 
 endpackage: FSM
