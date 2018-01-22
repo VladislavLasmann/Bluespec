@@ -1,5 +1,6 @@
 package Counter;
-    
+    import StmtFSM::Stmt;
+    import StmtFSM::mkAutoFSM;
     typedef union tagged {
         void Invalid;
         data_t Valid;
@@ -48,7 +49,7 @@ package Counter;
 
     module mkCounterTest(Empty);
         SimpleCounter uut <- mkSimpleCounter();
-        StmtFSM::Stmt testbench = {
+        Stmt testbench = {
             seq
                 action
                     uut.incr(5);
@@ -67,6 +68,6 @@ package Counter;
                 endaction
             endseq
         };
-        StmtFSM::mkAutoFSM(testbench);
+        mkAutoFSM(testbench);
     endmodule
 endpackage
