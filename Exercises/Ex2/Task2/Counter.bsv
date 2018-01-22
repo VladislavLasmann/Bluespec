@@ -1,5 +1,5 @@
 package Counter;
-    import StmtFSM::*;
+    
     typedef union tagged {
         void Invalid;
         data_t Valid;
@@ -67,7 +67,6 @@ package Counter;
                 endaction
             endseq
         };
-
         mkAutoFSM(testbench);
     endmodule
 endpackage
