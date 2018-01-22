@@ -48,7 +48,7 @@ package Counter;
 
     module mkCounterTest(Empty);
         SimpleCounter uut <- mkSimpleCounter();
-        Stmt testbench = {
+        StmtFSM::Stmt testbench = {
             seq
                 action
                     uut.incr(5);
@@ -67,6 +67,6 @@ package Counter;
                 endaction
             endseq
         };
-        mkAutoFSM(testbench);
+        StmtFSM::mkAutoFSM(testbench);
     endmodule
 endpackage
