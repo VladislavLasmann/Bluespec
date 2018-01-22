@@ -1,7 +1,5 @@
 package Counter;
     import StmtFSM::*;
-    
-
     typedef union tagged {
         void Invalid;
         data_t Valid;
@@ -11,7 +9,7 @@ package Counter;
         method Action incr(UInt#(32) v);
         method Action decr(UInt#(32) v);
         method UInt#(32) counterValue();
-    endinterface:SimpleCounter
+    endinterface
 
     module mkSimpleCounter(SimpleCounter); 
         RWire#(UInt#(32)) incrWire <- mkRWire();
@@ -46,7 +44,7 @@ package Counter;
         method UInt#(32) counterValue();
             return cntr;
         endmethod
-    endmodule:mkSimpleCounter
+    endmodule
 
     module mkCounterTest(Empty);
         SimpleCounter uut <- mkSimpleCounter();
@@ -71,6 +69,5 @@ package Counter;
         };
 
         mkAutoFSM(testbench);
-    endmodule:mkCounterTest
-
-endpackage: Counter
+    endmodule
+endpackage
