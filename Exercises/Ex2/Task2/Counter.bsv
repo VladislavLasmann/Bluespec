@@ -1,3 +1,7 @@
+package Counter;
+
+import StmtFSM::*;
+
 typedef union tagged {
     void Invalid;
     data_t Valid;
@@ -68,3 +72,5 @@ module mkCounterTest(Empty);
 
     mkAutoFSM(testbench);
 endmodule
+
+endpackage: Counter
