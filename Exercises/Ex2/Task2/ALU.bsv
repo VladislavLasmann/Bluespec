@@ -1,3 +1,5 @@
+import StmtFSM :: *;
+
 typedef enum{Mul,Div,Add,Sub,And,Or} AluOps deriving (Eq, Bits);
 typedef union tagged {UInt#(32) Unsigned; Int#(32) Signed;} SignedOrUnsigned deriving (Bits, Eq);
 
