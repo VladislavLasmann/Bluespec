@@ -1,6 +1,5 @@
 package Counter;
-    import StmtFSM::Stmt;
-    import StmtFSM::mkAutoFSM;
+    import StmtFSM::*;
     typedef union tagged {
         void Invalid;
         data_t Valid;
