@@ -1,4 +1,6 @@
-typed union tagged {
+import StmtFSM :: *;
+
+type union tagged {
     void Invalid;
     data_t Valid;
 } Maybe #(type data_t) deriving (Eq, Bits);
