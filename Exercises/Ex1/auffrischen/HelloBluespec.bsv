@@ -2,7 +2,7 @@ package HelloBluespec;
     module mkHelloBluespec(Empty);
         Reg #(UInt#(25))    counter <- mkReg(0);
 
-        rule count (couter != 25'h1ffffff);
+        rule count (counter != 25'h1ffffff);
             counter <= counter + 1;
         endrule
 
