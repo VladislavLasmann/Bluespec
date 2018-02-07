@@ -1,4 +1,8 @@
 package HelloBluespec;
+    interface HelloBluespec;
+        (* always_enabled, always_ready *) method Bool led();
+    endinterface
+
     module mkHelloBluespec(Empty);
         Reg #(UInt#(25))    counter <- mkReg(0);
 
@@ -10,7 +14,6 @@ package HelloBluespec;
             $display("(%0d) Hello World!", $time);
             counter <= 0;
         endrule
-
 
     endmodule
 
