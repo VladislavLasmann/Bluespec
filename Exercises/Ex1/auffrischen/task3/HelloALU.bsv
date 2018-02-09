@@ -33,6 +33,7 @@ package HelloALU;
             operand2 <= b;
             result   <= 1;
             readyForCalc <= True;
+            validResult  <= False;
         endmethod
 
         method Int#(32) getResult if (validResult);
@@ -89,6 +90,22 @@ package HelloALU;
     module mkALUTestbench(Empty);
         HelloALU dut    <- mkHelloALU();
         Reg#(UInt#(32)) state <- mkReg(0);
+
+        rule stateIncr;
+            state <= state + 1;
+        endrule
+
+        rule power (state == 0);
+            dut.setupCalculation(Pow, 2, 3);
+        endrule
+
+        rule printResult;
+            $display("==    %d", dut.getResult() );
+        endrule
+
+        rule testDone (state >= 2);
+            $finish();
+        endrule
 
     endmodule
 endpackage
