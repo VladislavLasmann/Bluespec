@@ -23,4 +23,17 @@ package HelloBluespec;
 
     endmodule
 
+    module mkHelloTestbench(Empty);
+        HelloBluespec   dut     <- mkHelloBluespec();
+        Reg#(UInt#(32)) counter <- mkReg(0);
+
+        rule endSimulation (counter == 200000000);
+            $finish();
+        endrule
+
+        rule counterIncr;
+            counter <= counter + 1;
+        endrule
+    endmodule
+
 endpackage
