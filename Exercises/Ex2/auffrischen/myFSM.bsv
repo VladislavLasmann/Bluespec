@@ -32,6 +32,8 @@ package FSMTests;
                 endseq
             endpar
         };
+
+        mkFsm(mySecondFSM);
     endmodule
 
 endpackage
