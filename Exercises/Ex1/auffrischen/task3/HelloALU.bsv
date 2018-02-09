@@ -44,9 +44,7 @@ package HelloALU;
         endmethod
     endmodule
 
-
-
-    endmodule mkALUTestbench(Empty);
+    module mkALUTestbench(Empty);
         HelloALU dut    <- mkHelloALU();
         Reg#(UInt#(32)) state <- mkReg(0);
 
