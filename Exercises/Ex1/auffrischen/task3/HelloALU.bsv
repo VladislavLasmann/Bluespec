@@ -24,22 +24,12 @@ package HelloALU;
                 Sub:    tmpResult = op1 - op2;
                 And:    tmpResult = op1 & op2;
                 Or:     tmpResult = op1 | op2;
-                Pow:    tmpResult = calculatePow(op1, op2);
             endcase
 
             result <= tmpResult;
             readyForCalc <= False;
             validResult  <= True;
         endrule
-
-        method #(Int#(32)) calculatePow(Int#(32) a, Int#(32) b);
-            Int#(32)    tmpResult = a;
-
-            for( int i = 0; i < b; i = i + 1)
-                tmpResult = tmpResult * a;
-
-            return tmpResult;
-        endmethod
 
         method Action setupCalculation(AluOps op, Int#(32) a, Int#(32) b);
             operation   <= op;
