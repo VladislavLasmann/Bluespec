@@ -39,8 +39,8 @@ package HelloALU;
         endmethod
 
         method ActionValue#(Int#(32)) getResult() if(validResult);
-            return result;
             validResult <= False;
+            return result;
         endmethod
     endmodule
 
