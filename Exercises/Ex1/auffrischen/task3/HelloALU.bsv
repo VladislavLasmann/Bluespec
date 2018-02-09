@@ -17,7 +17,7 @@ package HelloALU;
 
         rule calculate (readyForCalc);
             Int#(32)    tmpResult = 0;
-            case(operation);
+            case(operation)
                 Mul:    tmpResult = op1 * op2;
                 Div:    tmpResult = op1 / op2;
                 Add:    tmpResult = op1 + op2;
@@ -25,7 +25,7 @@ package HelloALU;
                 And:    tmpResult = op1 & op2;
                 Or:     tmpResult = op1 | op2;
                 Pow:    tmpResult = calculatePow(op1, op2);
-            endcase;
+            endcase
 
             result <= tmpResult;
             readyForCalc <= False;
