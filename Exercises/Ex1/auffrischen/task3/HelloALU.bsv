@@ -3,7 +3,7 @@ package HelloALU;
 
     interface Power;
         method Action   setOperands (Int#(32) a, Int#(32) b);
-        method Int#(32) getResult;
+        method ActionValue Int#(32) getResult;
     endinterface
     module mkPower(Power);
         Reg#(Int#(32))  operand1    <- mkRegU;
