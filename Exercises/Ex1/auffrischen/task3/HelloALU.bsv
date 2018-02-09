@@ -31,7 +31,7 @@ package HelloALU;
             readyForCalc <= True;
         endmethod
 
-        method Int#(32) getResult if (validResult);
+        method ActionValue Int#(32) getResult if (validResult);
             validResult <= False;
             return result;
         endmethod
