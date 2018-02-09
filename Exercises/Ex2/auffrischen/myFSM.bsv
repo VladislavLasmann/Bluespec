@@ -2,6 +2,7 @@ package FSMTests;
     import StmtFSM::*;
 
     module mkFirstFSM(Empty);
+        delay(100);
         Stmt myFirstFSM = {
             seq
                 action
