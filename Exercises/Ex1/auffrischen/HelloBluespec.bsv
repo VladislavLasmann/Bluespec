@@ -20,7 +20,7 @@ package HelloBluespec;
 
         rule ledStatChange (counter == 25'h1ffffff);
             ledStat <= ! ledStat;
-        endrule;
+        endrule
 
         method Bool led();
             return ledStat;
