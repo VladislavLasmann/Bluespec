@@ -22,7 +22,6 @@ package HelloBluespec;
             ledStat <= ! ledStat;
         endrule
 
-
         method Bool led();
             return ledStat;
         endmethod
