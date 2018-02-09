@@ -3,7 +3,7 @@ package HelloALU;
 
     interface Power;
         method Action   setOperands (Int#(32) a, Int#(32) b);
-        method ActionValue Int#(32) getResult;
+        method Int#(32) getResult;
     endinterface
     module mkPower(Power);
         Reg#(Int#(32))  operand1    <- mkRegU;
@@ -24,6 +24,10 @@ package HelloALU;
             end
         endrule
 
+        rule calcDone (operand2 == 0 && !resultValid);
+            validResult <= True;
+        endrule
+
         method Action   setOperands (Int#(32) a, Int#(32) b);
             operand1 <= a;
             operand2 <= b;
@@ -31,8 +35,7 @@ package HelloALU;
             readyForCalc <= True;
         endmethod
 
-        method ActionValue Int#(32) getResult if (validResult);
-            validResult <= False;
+        method Int#(32) getResult if (validResult);
             return result;
         endmethod
     endmodule
