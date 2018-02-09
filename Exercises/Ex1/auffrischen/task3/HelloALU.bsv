@@ -99,7 +99,7 @@ package HelloALU;
             dut.setupCalculation(Pow, 2, 3);
         endrule
 
-        rule printResult;
+        rule printResult (state == 1);
             $display("==    %d", dut.getResult() );
         endrule
 
