@@ -24,7 +24,7 @@ package HelloALU;
             end
         endrule
 
-        rule calcDone (operand2 == 0 && !resultValid);
+        rule calcDone (operand2 == 0 && !validResult);
             validResult <= True;
         endrule
 
