@@ -13,13 +13,6 @@ package HelloALU;
         Reg#(Bool)      readyForCalc<- mkReg(False);
         Reg#(Bool)      validResult <- mkReg(False);
 
-        method Action   setOperands (Int#(32) a, Int#(32) b);
-            operand1 <= a;
-            operand2 <= b;
-            result   <= 1;
-            readyForCalc <= True;
-        endmodule
-
         rule calculate (readyForCalc == True);
             if (operand2 == 0) begin
                 validResult <= True;
@@ -30,6 +23,13 @@ package HelloALU;
                 operand2 <= operand2 - 1;
             end
         endrule
+        
+        method Action   setOperands (Int#(32) a, Int#(32) b);
+            operand1 <= a;
+            operand2 <= b;
+            result   <= 1;
+            readyForCalc <= True;
+        endmodule
 
         method Int#(32) getResult if (validResult);
             validResult <= False;
