@@ -2,9 +2,9 @@ package FSMTests;
     import StmtFSM::*;
 
     module mkFirstFSM(Empty);
-        delay(100);
         Stmt myFirstFSM = {
             seq
+                delay(100);
                 action
                     $display("(%0d) Hello World", $time);
                 endaction
