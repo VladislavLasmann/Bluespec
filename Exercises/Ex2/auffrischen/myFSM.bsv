@@ -8,7 +8,7 @@ package FSMTests;
                     $display("(%0d) Hello World", $time);
                 endaction
             endseq
-        }
+        };
         mkAutoFSM( myFirstFSM ); 
     endmodule
 
