@@ -33,7 +33,7 @@ package FSMTests;
             endpar
         };
 
-        mkFsm(mySecondFSM);
+        mkAutoFSM(mySecondFSM);
     endmodule
 
 endpackage
