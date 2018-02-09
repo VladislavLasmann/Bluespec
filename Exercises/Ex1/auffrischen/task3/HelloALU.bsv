@@ -23,18 +23,18 @@ package HelloALU;
                 operand2 <= operand2 - 1;
             end
         endrule
-        
+
         method Action   setOperands (Int#(32) a, Int#(32) b);
             operand1 <= a;
             operand2 <= b;
             result   <= 1;
             readyForCalc <= True;
-        endmodule
+        endmethod
 
         method Int#(32) getResult if (validResult);
             validResult <= False;
             return result;
-        endmodule
+        endmethod
     endmodule
 
     interface HelloALU;
