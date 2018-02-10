@@ -60,9 +60,9 @@ package ALUTestFSM;
     module mkALU(ALU);
         Power                   pow     <- mkPower();
 
-        Reg#(SignedOrUnsigned)  opA     <- mkReg(0);
-        Reg#(SignedOrUnsigned)  opB     <- mkReg(0);
-        Reg#(SignedOrUnsigned)  result  <- mkReg(0);
+        Reg#(SignedOrUnsigned)  opA     <- mkReg(tagged Signed 0);
+        Reg#(SignedOrUnsigned)  opB     <- mkReg(tagged Signed 0);
+        Reg#(SignedOrUnsigned)  result  <- mkReg(tagged Signed 0);
         Reg#(AluOps)            operation<- mkReg(Mul);
 
         Reg#(Bool)      readyForCalc    <- mkReg(False);
