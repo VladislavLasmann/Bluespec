@@ -3,10 +3,6 @@ package myCounter;
     import Vector::*;
 
 /////////////////////////////////////////////////////////////////////////////
-    typedef union tagged {
-        void Invalid;
-        data_t Valid;
-    } Maybe #(type data_t) deriving (Eq, Bits);
 
     typedef struct {
         UInt#(32) incr;
