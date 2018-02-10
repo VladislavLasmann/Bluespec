@@ -41,12 +41,12 @@ package FSMTests;
         PulseWire       pw      <- mkPulseWire();
         Reg#(UInt#(12)) i       <- mkReg(0);
 
-        rule count (i < 99);
-            i <= i + 1;
+        rule count (counter < 99);
+            counter <= counter + 1;
         endrule
 
-        rule resetCount (i == 99);
-            i <= 0;
+        rule resetCount (counter == 99);
+            counter <= 0;
             pw.send();
         endrule
 
