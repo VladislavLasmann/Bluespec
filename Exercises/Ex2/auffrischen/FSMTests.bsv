@@ -59,7 +59,7 @@ package FSMTests;
             endseq
         };
         FSM myFSM <- mkFSMWithPred(thirdStmt, pw);
-        rule ( myFSM.done() );
+        rule startFSM ( myFSM.done() );
             myFSM.start();
         endrule
 
