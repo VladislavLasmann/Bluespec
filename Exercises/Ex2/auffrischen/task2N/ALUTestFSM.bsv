@@ -77,7 +77,7 @@ package ALUTestFSM;
                 Sub:    tmpResult = opA - opB;
                 And:    tmpResult = opA & opB;
                 Or:     tmpResult = opA | opB;
-                Pow:    power.getResult();
+                Pow:    pow.getResult();
             endcase
 
             result <= tmpResult;
@@ -94,7 +94,7 @@ package ALUTestFSM;
             readyForCalc    <= True;
             validResult     <= False;
 
-            power.setOperands(a, b);
+            pow.setOperands(a, b);
         endmethod
 
         method ActionValue#(Int#(32)) getResult() if (validResult);
