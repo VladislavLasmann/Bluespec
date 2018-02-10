@@ -64,7 +64,7 @@ package myCounter;
                 endaction
                 action
                     let testData = testVector[pntr];
-                    let result  = dut.counterValue();
+                    let result  <- dut.counterValue();
                     let print = $format("incr: %d, decr: %d", testData.incr, testData.decr);
                     $display(print);
                     if( result == testData.expectedCount )
