@@ -146,12 +146,12 @@ package ALUTestFSM;
         Reg#(UInt#(12)) counterLimit <- mkReg( 6 );
 
         Vector#(6, TestData) testVector;
-        testVector[0] = TestData{opA: 3, opB: 4, operator: Mul, expectedResult: 12};
-        testVector[1] = TestData{opA: 12, opB: 4, operator: Div, expectedResult: 3};
-        testVector[2] = TestData{opA: 3, opB: 4, operator: Add, expectedResult: 7};
-        testVector[3] = TestData{opA: 7, opB: 4, operator: Sub, expectedResult: 3};
-        testVector[4] = TestData{opA: 3, opB: 1, operator: And, expectedResult: 1};
-        testVector[5] = TestData{opA: 3, opB: 1, operator: Or, expectedResult: 3};
+        testVector[0] = TestData{opA: tagged Signed 3, opB: tagged Signed 4, operator: Mul, expectedResult: tagged Signed 12};
+        testVector[1] = TestData{opA: tagged Signed 12, opB: tagged Signed 4, operator: Div, expectedResult: tagged Signed 3};
+        testVector[2] = TestData{opA: tagged Signed 3, opB: tagged Signed 4, operator: Add, expectedResult: tagged Signed 7};
+        testVector[3] = TestData{opA: tagged Unsigned 7, opB: tagged Unsigned 4, operator: Sub, expectedResult: tagged Unsigned 3};
+        testVector[4] = TestData{opA: tagged Unsigned 3, opB: tagged Unsigned 1, operator: And, expectedResult: tagged Unsigned 1};
+        testVector[5] = TestData{opA: tagged Unsigned 3, opB: tagged Unsigned 1, operator: Or, expectedResult: tagged Unsigned 3};
         //testVector[6] = TestData{opA: 2, opB: 3, operator: Pow, expectedResult: 8};
 
         Stmt checkStmt = {
