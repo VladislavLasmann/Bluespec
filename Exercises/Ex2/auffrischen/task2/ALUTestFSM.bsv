@@ -69,6 +69,7 @@ package ALUTestFSM;
         testVector[4] = TestData{opA: 3, opB: 1, operator: And, expectedResult: 1};
         testVector[5] = TestData{opA: 3, opB: 1, operator: Or, expectedResult: 3};
 
+
         Stmt checkStmt = {
             seq
                 action
