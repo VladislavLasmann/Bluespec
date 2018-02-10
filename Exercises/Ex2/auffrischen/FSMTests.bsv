@@ -53,7 +53,7 @@ package FSMTests;
         Stmt thirdStmt = {
             seq
                 for( i <= 0; i < 20; i <= i + 1) seq
-                    $display("(%0d) Iteration: $d", $time, i);
+                    $display("(%0d) Iteration: %d", $time, i);
                 endseq
                 $finish();
             endseq
@@ -62,8 +62,6 @@ package FSMTests;
         rule startFSM ( myFSM.done() );
             myFSM.start();
         endrule
-
-
     endmodule
 
 endpackage
