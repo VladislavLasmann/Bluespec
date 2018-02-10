@@ -16,10 +16,10 @@ package ALUTestFSM;
     endinterface
 
     module mkALU(ALU);
-        Reg#(Int#(32))  opA     <- mkRegU();
-        Reg#(Int#(32))  opB     <- mkRegU();
-        Reg#(Int#(32))  result  <- mkRegU();
-        Reg#(AluOps)    operation <- mkRegU();
+        Reg#(Int#(32))  opA     <- mkReg(0);
+        Reg#(Int#(32))  opB     <- mkReg(0);
+        Reg#(Int#(32))  result  <- mkReg(0);
+        Reg#(AluOps)    operation <- mkReg(Mul);
 
         Reg#(Bool)      readyForCalc    <- mkReg(False);
         Reg#(Bool)      validResult     <- mkReg(False);
@@ -40,7 +40,7 @@ package ALUTestFSM;
             validResult <= True;
         endrule
 
-        method Action setupCalculation(AluOps op, Int#(32) a, Int#(32) b);
+        method Action setupCalculation(AluOps op, Int#(32) a, Int#(32) b) if(!readyForCalc);
             opA <= a;
             opB <= b;
             operation <= op;
@@ -50,7 +50,8 @@ package ALUTestFSM;
             validResult     <= False;
         endmethod
 
-        method ActionValue#(Int#(32)) getResult();
+        method ActionValue#(Int#(32)) getResult() if (validResult);
+            validResult <= False;
             return result;
         endmethod
 
