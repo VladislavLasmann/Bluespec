@@ -49,7 +49,6 @@ package Counter;
     module mkTestbench(Empty);
         SimpleCounter   dut     <- mkSimpleCounter();
 
-
         let maxElements = 4;
         Reg#(UInt#(32)) i       <- mkReg(0);
         Reg#(UInt#(32)) pntr    <- mkReg(0);
