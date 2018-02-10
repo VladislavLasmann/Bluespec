@@ -18,11 +18,7 @@ package ALUTestFSM;
         method t        getResult ();
     endinterface
 
-    module mkPower(Power#(t));
-        provisos(   Bits#(t, t_sz),
-                    Ord#(t),
-                    Arithm#(t),
-                    Eq#(t));
+    module mkPower(Power#(t)) provisos(   Bits#(t, t_sz),Ord#(t),Arithm#(t),Eq#(t));
         Reg#(t)  opA     <- mkReg(0);
         Reg#(t)  opB     <- mkReg(0);
         Reg#(t)  result  <- mkReg(0);
