@@ -59,8 +59,10 @@ package myCounter;
             seq
                 action
                     let testData = testVector[pntr];
-                    dut.incr(testData.incr);
-                    dut.decr(testData.decr);
+                    let incrVal   = testData.incr;
+                    let decrVal   = testData.decr;
+                    dut.incr(incrVal);
+                    dut.decr(decrVal);
                 endaction
                 action
                     let testData = testVector[pntr];
