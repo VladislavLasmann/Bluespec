@@ -7,27 +7,33 @@ package myCounter;
     typedef struct {
         UInt#(32) incr;
         UInt#(32) decr;
+        UInt#(32) load;
         UInt#(32) expectedCount;
     } TestData deriving (Eq, Bits);
 /////////////////////////////////////////////////////////////////////////////
     interface SimpleCounter;
         method Action incr(UInt#(32) v);
         method Action decr(UInt#(32) v);
+        method Action load(UInt#(32) v);
         method UInt#(32) counterValue();
     endinterface
 
     module mkSimpleCounter(SimpleCounter);
-        Reg#(UInt#(32))     counter    <- mkReg(0);
+        Reg#(UInt#(32))     counter     <- mkReg(0);
         RWire#(UInt#(32))   incrWire    <- mkRWire();
-        RWire#(UInt#(32))   decrWire   <- mkRWire();
+        RWire#(UInt#(32))   decrWire    <- mkRWire();
+        RWire#(UInt#(32))   loadWire    <- mkRWire();
 
         rule count;
             Maybe#(UInt#(32))   incrMaybe = incrWire.wget();
             Maybe#(UInt#(32))   decrMaybe = decrWire.wget();
+            Maybe#(UInt#(32))   loadMaybe = loadWire.wget();
 
             let incrValue   = fromMaybe(0, incrMaybe);
             let decrValue   = fromMaybe(0, decrMaybe);
-            counter         <= counter + incrValue - decrValue;
+            let loadValue   = fromMaybe(counter, loadMaybe);
+
+            counter         <= loadValue + incrValue - decrValue;
         endrule
 
         method Action incr(UInt#(32) v);
@@ -35,6 +41,9 @@ package myCounter;
         endmethod
         method Action decr(UInt#(32) v);
             decrWire.wset( v );
+        endmethod
+        method Action load(UInt#(32) v);
+            loadWire.wset( v );
         endmethod
         method UInt#(32) counterValue();
             return counter;
