@@ -34,7 +34,7 @@ package myCounter;
             incrWire.wset( v );
         endmethod
         method Action decr(UInt#(32) v);
-            incrWire.wset( v );
+            decrWire.wset( v );
         endmethod
         method UInt#(32) counterValue();
             return counter;
@@ -59,10 +59,8 @@ package myCounter;
             seq
                 action
                     let testData = testVector[pntr];
-                    let incrVal   = testData.incr;
-                    let decrVal   = testData.decr;
-                    dut.incr(incrVal);
-                    dut.decr(decrVal);
+                    dut.incr(testData.incr);
+                    dut.decr(testData.decr);
                 endaction
                 action
                     let testData = testVector[pntr];
