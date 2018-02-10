@@ -162,7 +162,7 @@ package ALUTestFSM;
         testVector[4] = TestData{opA: tagged Unsigned 3, opB: tagged Unsigned 1, operator: And, expectedResult: tagged Unsigned 1};
         testVector[5] = TestData{opA: tagged Unsigned 3, opB: tagged Unsigned 1, operator: Or, expectedResult: tagged Unsigned 3};
         testVector[6] = TestData{opA: tagged Signed 2, opB: tagged Signed 3, operator: Pow, expectedResult: tagged Signed 8};
-        testVector[7] = TestData{opA: tagged Unsigned 2, opB: tagged Unsigned 3, operator: Pow, expectedResult: tagged Unsigned 8};
+        testVector[7] = TestData{opA: tagged Signed 2, opB: tagged Signed 3, operator: Pow, expectedResult: tagged Signed 8};
 
         Stmt checkStmt = {
             seq
