@@ -13,7 +13,7 @@ package ALUTestFSM;
     } TestData deriving (Eq, Bits);
 
 ////////////////////////////////////////////////////
-    interface Power(type t);
+    interface Power#(type t);
         method Action   setOperands(t a, t b);
         method t        getResult ();
     endinterface
