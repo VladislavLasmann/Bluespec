@@ -27,7 +27,7 @@ package myCounter;
 
             let incrValue   = fromMaybe(0, incrMaybe);
             let decrValue   = fromMaybe(0, decrMaybe);
-            counter         <= counter + incrValue + decrValue;
+            counter         <= counter + incrValue - decrValue;
         endrule
 
         method Action incr(UInt#(32) v);
