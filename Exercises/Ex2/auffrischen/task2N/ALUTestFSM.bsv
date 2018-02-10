@@ -111,7 +111,7 @@ package ALUTestFSM;
         Reg#(UInt#(12)) counter <- mkReg(0);
         Reg#(UInt#(12)) counterLimit <- mkReg( 7 );
 
-        Vector#(6, TestData) testVector;
+        Vector#(counterLimit, TestData) testVector;
         testVector[0] = TestData{opA: 3, opB: 4, operator: Mul, expectedResult: 12};
         testVector[1] = TestData{opA: 12, opB: 4, operator: Div, expectedResult: 3};
         testVector[2] = TestData{opA: 3, opB: 4, operator: Add, expectedResult: 7};
