@@ -131,7 +131,7 @@ package ALUTestFSM;
             validResult     <= False;
         endmethod
 
-        method ActionValue#(Int#(32)) getResult() if (validResult);
+        method ActionValue#(SignedOrUnsigned) getResult() if (validResult);
             validResult <= False;
             return result;
         endmethod
