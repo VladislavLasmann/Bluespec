@@ -58,7 +58,6 @@ package ALUTestFSM;
 
     module mkALUTestbench(Empty);
         ALU             dut     <- mkALU();
-        PulseWire       wire    <- mkPulseWire();
         Reg#(UInt#(12)) counter <- mkReg(0);
 
         Vector#(6, TestData) testVector;
