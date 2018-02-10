@@ -55,10 +55,10 @@ package Counter;
         Reg#(UInt#(32)) pntr    <- mkReg(0);
 
         Vector#(maxElements, TestData) testVector;
-        testVector[0] = TestData {incr: 5, decr: 3, expectedCount: 2};
-        testVector[1] = TestData {incr: 3, decr: 5, expectedCount: 0};
-        testVector[2] = TestData {incr: 7, decr: 7, expectedCount: 0};
-        testVector[3] = TestData {incr: 4, decr: 3, expectedCount: 1};
+        testVector[0]=TestData {incr: 5, decr: 3, expectedCount: 2};
+        testVector[1]=TestData {incr: 3, decr: 5, expectedCount: 0};
+        testVector[2]=TestData {incr: 7, decr: 7, expectedCount: 0};
+        testVector[3]=TestData {incr: 4, decr: 3, expectedCount: 1};
 
         Stmt testStmt = {
             seq
