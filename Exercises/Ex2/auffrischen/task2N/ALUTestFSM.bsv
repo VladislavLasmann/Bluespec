@@ -118,7 +118,7 @@ package ALUTestFSM;
         testVector[3] = TestData{opA: 7, opB: 4, operator: Sub, expectedResult: 3};
         testVector[4] = TestData{opA: 3, opB: 1, operator: And, expectedResult: 1};
         testVector[5] = TestData{opA: 3, opB: 1, operator: Or, expectedResult: 3};
-        testVector[5] = TestData{opA: 2, opB: 3, operator: Pow, expectedResult: 8};
+        testVector[6] = TestData{opA: 2, opB: 3, operator: Pow, expectedResult: 8};
 
 
 
