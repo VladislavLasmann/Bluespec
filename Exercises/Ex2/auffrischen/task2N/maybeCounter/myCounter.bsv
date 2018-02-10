@@ -13,7 +13,7 @@ package myCounter;
     interface SimpleCounter;
         method Action incr(UInt#(32) v);
         method Action decr(UInt#(32) v);
-        method UInt#(32) counterValue();
+        method ActionValue UInt#(32) counterValue();
     endinterface
 
     module mkSimpleCounter(SimpleCounter);
@@ -36,7 +36,7 @@ package myCounter;
         method Action decr(UInt#(32) v);
             incrWire.wset( v );
         endmethod
-        method UInt#(32) counterValue();
+        method ActionValue UInt#(32) counterValue();
             return counter;
         endmethod
     endmodule
