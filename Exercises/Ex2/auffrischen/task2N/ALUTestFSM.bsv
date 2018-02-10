@@ -6,10 +6,10 @@ package ALUTestFSM;
     typedef enum{Mul, Div, Add, Sub, And, Or, Pow} AluOps deriving (Eq, Bits, FShow);
     typedef union tagged {UInt#(32) Unsigned; Int#(32) Signed;} SignedOrUnsigned deriving (Bits, Eq);
     typedef struct {
-        Int#(32)    opA;
-        Int#(32)    opB;
-        AluOps      operator;
-        Int#(32)    expectedResult;
+        SignedOrUnsigned    opA;
+        SignedOrUnsigned    opB;
+        AluOps              operator;
+        SignedOrUnsigned    expectedResult;
     } TestData deriving (Eq, Bits);
 
 ////////////////////////////////////////////////////
@@ -53,23 +53,23 @@ package ALUTestFSM;
 
 ////////////////////////////////////////////////////
     interface ALU;
-        method Action setupCalculation(AluOps op, Int#(32) a, Int#(32) b);
+        method Action setupCalculation(AluOps op, SignedOrUnsigned a, SignedOrUnsigned b);
         method ActionValue#(Int#(32)) getResult();
     endinterface
 
     module mkALU(ALU);
-        Power           pow     <- mkPower();
+        Power                   pow     <- mkPower();
 
-        Reg#(Int#(32))  opA     <- mkReg(0);
-        Reg#(Int#(32))  opB     <- mkReg(0);
-        Reg#(Int#(32))  result  <- mkReg(0);
-        Reg#(AluOps)    operation <- mkReg(Mul);
+        Reg#(SignedOrUnsigned)  opA     <- mkReg(0);
+        Reg#(SignedOrUnsigned)  opB     <- mkReg(0);
+        Reg#(SignedOrUnsigned)  result  <- mkReg(0);
+        Reg#(AluOps)            operation<- mkReg(Mul);
 
         Reg#(Bool)      readyForCalc    <- mkReg(False);
         Reg#(Bool)      validResult     <- mkReg(False);
 
         rule calculate (readyForCalc == True);
-            Int#(32)    tmpResult = 0;
+            SignedOrUnsigned    tmpResult = 0;
             case(operation) 
                 Mul:    tmpResult = opA * opB;
                 Div:    tmpResult = opA / opB;
@@ -77,7 +77,7 @@ package ALUTestFSM;
                 Sub:    tmpResult = opA - opB;
                 And:    tmpResult = opA & opB;
                 Or:     tmpResult = opA | opB;
-                Pow:    tmpResult = pow.getResult();
+                //Pow:    tmpResult = pow.getResult();
             endcase
 
             result <= tmpResult;
@@ -85,16 +85,31 @@ package ALUTestFSM;
             validResult <= True;
         endrule
 
-        method Action setupCalculation(AluOps op, Int#(32) a, Int#(32) b) if(!readyForCalc);
+        method Action setupCalculationUnsigned(AluOps op, UInt#(32) a, UInt#(32) b);
             opA <= a;
             opB <= b;
             operation <= op;
-            result <= 0;
 
             readyForCalc    <= True;
             validResult     <= False;
+        endmethod
 
-            pow.setOperands(a, b);
+        method Action setupCalculationSigned(AluOps op, Int#(32) a, Int#(32) b);
+            opA <= a;
+            opB <= b;
+            operation <= op;
+
+            readyForCalc    <= True;
+            validResult     <= False;
+        endmethod;
+
+        method Action setupCalculation(AluOps op, SignedOrUnsigned a, SignedOrUnsigned b) if(!readyForCalc);
+            if (a matches tagged Unsigned .aVal && b matches tagged Unsigned .bVal)
+                setupCalculationUnsigned(op, aVal, bVal);
+            else if (a matches tagged Signed .aVal && b machtes tagged Signed .bVal);
+                setupCalculationSigned(op, aVal, bVal);
+            else
+                $display("(%0d) operand-types must be the same");
         endmethod
 
         method ActionValue#(Int#(32)) getResult() if (validResult);
@@ -109,18 +124,16 @@ package ALUTestFSM;
     module mkALUTestbench(Empty);
         ALU             dut     <- mkALU();
         Reg#(UInt#(12)) counter <- mkReg(0);
-        Reg#(UInt#(12)) counterLimit <- mkReg( 7 );
+        Reg#(UInt#(12)) counterLimit <- mkReg( 6 );
 
-        Vector#(7, TestData) testVector;
+        Vector#(6, TestData) testVector;
         testVector[0] = TestData{opA: 3, opB: 4, operator: Mul, expectedResult: 12};
         testVector[1] = TestData{opA: 12, opB: 4, operator: Div, expectedResult: 3};
         testVector[2] = TestData{opA: 3, opB: 4, operator: Add, expectedResult: 7};
         testVector[3] = TestData{opA: 7, opB: 4, operator: Sub, expectedResult: 3};
         testVector[4] = TestData{opA: 3, opB: 1, operator: And, expectedResult: 1};
         testVector[5] = TestData{opA: 3, opB: 1, operator: Or, expectedResult: 3};
-        testVector[6] = TestData{opA: 2, opB: 3, operator: Pow, expectedResult: 8};
-
-
+        //testVector[6] = TestData{opA: 2, opB: 3, operator: Pow, expectedResult: 8};
 
         Stmt checkStmt = {
             seq
