@@ -68,6 +68,42 @@ package ALUTestFSM;
         Reg#(Bool)      readyForCalc    <- mkReg(False);
         Reg#(Bool)      validResult     <- mkReg(False);
 
+
+        rule calculateSigned ( readyForCalc &&& opA matches tagged Signed .aVal &&& opB matches tagged Signed .bVal);
+            Int#(32)    tmpResult = 0;
+            case(operation) 
+                Mul:    tmpResult = aVal * bVal;
+                Div:    tmpResult = aVal / bVal;
+                Add:    tmpResult = aVal + bVal;
+                Sub:    tmpResult = aVal - bVal;
+                And:    tmpResult = aVal & bVal;
+                Or:     tmpResult = aVal | bVal;
+                //Pow:    tmpResult = pow.getResult();
+            endcase
+
+            result <= tmpResult;
+            readyForCalc <= False;
+            validResult <= True;
+        endrule
+
+        rule calculateSigned ( readyForCalc &&& opA matches tagged Unsigned .aVal &&& opB matches tagged Unsigned .bVal);
+            UInt#(32)   tmpResult = 0;
+            case(operation) 
+                Mul:    tmpResult = aVal * bVal;
+                Div:    tmpResult = aVal / bVal;
+                Add:    tmpResult = aVal + bVal;
+                Sub:    tmpResult = aVal - bVal;
+                And:    tmpResult = aVal & bVal;
+                Or:     tmpResult = aVal | bVal;
+                //Pow:    tmpResult = pow.getResult();
+            endcase
+
+            result <= tmpResult;
+            readyForCalc <= False;
+            validResult <= True;
+        endrule
+
+        /*
         rule calculate (readyForCalc == True);
             SignedOrUnsigned    tmpResult = 0;
             case(operation) 
@@ -84,32 +120,15 @@ package ALUTestFSM;
             readyForCalc <= False;
             validResult <= True;
         endrule
-
-        method Action setupCalculationUnsigned(AluOps op, UInt#(32) a, UInt#(32) b);
-            opA <= a;
-            opB <= b;
-            operation <= op;
-
-            readyForCalc    <= True;
-            validResult     <= False;
-        endmethod
-
-        method Action setupCalculationSigned(AluOps op, Int#(32) a, Int#(32) b);
-            opA <= a;
-            opB <= b;
-            operation <= op;
-
-            readyForCalc    <= True;
-            validResult     <= False;
-        endmethod
+        */
 
         method Action setupCalculation(AluOps op, SignedOrUnsigned a, SignedOrUnsigned b) if(!readyForCalc);
-            if (a matches tagged Unsigned .aVal &&& b matches tagged Unsigned .bVal)
-                setupCalculationUnsigned(op, aVal, bVal);
-            else if (a matches tagged Signed .aVal &&& b matches tagged Signed .bVal)
-                setupCalculationSigned(op, aVal, bVal);
-            else
-                $display("(%0d) operand-types must be the same");
+            opA <= a;
+            opB <= b;
+            operation <= op;
+
+            readyForCalc    <= True;
+            validResult     <= False;
         endmethod
 
         method ActionValue#(Int#(32)) getResult() if (validResult);
