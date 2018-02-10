@@ -51,8 +51,8 @@ package Counter;
 
 
         let maxElements = 4;
-        Reg#(UInt#(32)) i       <= 0;
-        Reg#(UINt#(32)) pntr    <= 0;
+        Reg#(UInt#(32)) i       <- mkReg(0);
+        Reg#(UInt#(32)) pntr    <- mkReg(0);
 
         Vector#(maxElements, TestData) testVector;
         testVector[0] = TestData {incr: 5, decr: 3, expectedCount: 2};
