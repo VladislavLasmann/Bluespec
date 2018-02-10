@@ -101,7 +101,7 @@ package ALUTestFSM;
 
             readyForCalc    <= True;
             validResult     <= False;
-        endmethod;
+        endmethod
 
         method Action setupCalculation(AluOps op, SignedOrUnsigned a, SignedOrUnsigned b) if(!readyForCalc);
             if (a matches tagged Unsigned .aVal && b matches tagged Unsigned .bVal)
