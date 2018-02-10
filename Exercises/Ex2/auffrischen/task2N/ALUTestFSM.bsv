@@ -54,7 +54,7 @@ package ALUTestFSM;
 ////////////////////////////////////////////////////
     interface ALU;
         method Action setupCalculation(AluOps op, SignedOrUnsigned a, SignedOrUnsigned b);
-        method ActionValue#(Int#(32)) getResult();
+        method ActionValue#(SignedOrUnsigned) getResult();
     endinterface
 
     module mkALU(ALU);
