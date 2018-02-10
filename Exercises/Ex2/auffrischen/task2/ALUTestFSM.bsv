@@ -100,4 +100,4 @@ package ALUTestFSM;
         mkAutoFSM( testStmt );
     endmodule
 
-endpackage;
+endpackage
