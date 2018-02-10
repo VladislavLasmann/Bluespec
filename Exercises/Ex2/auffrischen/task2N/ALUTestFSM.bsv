@@ -106,7 +106,7 @@ package ALUTestFSM;
         method Action setupCalculation(AluOps op, SignedOrUnsigned a, SignedOrUnsigned b) if(!readyForCalc);
             if (a matches tagged Unsigned .aVal &&& b matches tagged Unsigned .bVal)
                 setupCalculationUnsigned(op, aVal, bVal);
-            else if (a matches tagged Signed .aVal &&& b machtes tagged Signed .bVal)
+            else if (a matches tagged Signed .aVal &&& b matches tagged Signed .bVal)
                 setupCalculationSigned(op, aVal, bVal);
             else
                 $display("(%0d) operand-types must be the same");
