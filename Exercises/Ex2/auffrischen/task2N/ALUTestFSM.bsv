@@ -156,16 +156,17 @@ package ALUTestFSM;
     module mkALUTestbench(Empty);
         ALU             dut     <- mkALU();
         Reg#(UInt#(12)) counter <- mkReg(0);
-        Reg#(UInt#(12)) counterLimit <- mkReg( 6 );
+        Reg#(UInt#(12)) counterLimit <- mkReg( 8 );
 
-        Vector#(6, TestData) testVector;
+        Vector#(8, TestData) testVector;
         testVector[0] = TestData{opA: tagged Signed 3, opB: tagged Signed 4, operator: Mul, expectedResult: tagged Signed 12};
         testVector[1] = TestData{opA: tagged Signed 12, opB: tagged Signed 4, operator: Div, expectedResult: tagged Signed 3};
         testVector[2] = TestData{opA: tagged Signed 3, opB: tagged Signed 4, operator: Add, expectedResult: tagged Signed 7};
         testVector[3] = TestData{opA: tagged Unsigned 7, opB: tagged Unsigned 4, operator: Sub, expectedResult: tagged Unsigned 3};
         testVector[4] = TestData{opA: tagged Unsigned 3, opB: tagged Unsigned 1, operator: And, expectedResult: tagged Unsigned 1};
         testVector[5] = TestData{opA: tagged Unsigned 3, opB: tagged Unsigned 1, operator: Or, expectedResult: tagged Unsigned 3};
-        //testVector[6] = TestData{opA: 2, opB: 3, operator: Pow, expectedResult: 8};
+        testVector[6] = TestData{opA: tagged Signed 2, opB: tagged Signed 3, operator: Pow, expectedResult: tagged Signed 8};
+        testVector[7] = TestData{opA: tagged Unsigned 2, opB: tagged Unsigned 3, operator: Pow, expectedResult: tagged Unsigned 8};
 
         Stmt checkStmt = {
             seq
