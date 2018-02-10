@@ -81,7 +81,7 @@ package ALUTestFSM;
                 //Pow:    tmpResult = pow.getResult();
             endcase
 
-            result <= tmpResult;
+            result <= tagged Signed tmpResult;
             readyForCalc <= False;
             validResult <= True;
         endrule
@@ -98,7 +98,7 @@ package ALUTestFSM;
                 //Pow:    tmpResult = pow.getResult();
             endcase
 
-            result <= tmpResult;
+            result <= tagged Unsigned tmpResult;
             readyForCalc <= False;
             validResult <= True;
         endrule
