@@ -4,7 +4,7 @@ package ALUTestFSM;
     import Vector::*;
 /////////////////////////////////////////////////////
     typedef enum{Mul, Div, Add, Sub, And, Or, Pow} AluOps deriving (Eq, Bits, FShow);
-    typedef union tagged {Int#(32) Signed; UInt#(32) Unsigned; UInt#(32) FUCK} SignedOrUnsigned deriving (Bits, Eq);
+    typedef union tagged {Int#(32) Signed; UInt#(32) Unsigned; UInt#(32) FUCK;} SignedOrUnsigned deriving (Bits, Eq);
     typedef struct {
         SignedOrUnsigned    opA;
         SignedOrUnsigned    opB;
