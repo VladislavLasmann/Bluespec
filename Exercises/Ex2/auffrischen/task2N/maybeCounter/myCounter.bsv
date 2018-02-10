@@ -13,7 +13,7 @@ package myCounter;
     interface SimpleCounter;
         method Action incr(UInt#(32) v);
         method Action decr(UInt#(32) v);
-        method ActionValue#(UInt#(32)) counterValue();
+        method UInt#(32) counterValue();
     endinterface
 
     module mkSimpleCounter(SimpleCounter);
@@ -36,7 +36,7 @@ package myCounter;
         method Action decr(UInt#(32) v);
             incrWire.wset( v );
         endmethod
-        method ActionValue#(UInt#(32)) counterValue();
+        method UInt#(32) counterValue();
             return counter;
         endmethod
     endmodule
@@ -64,7 +64,7 @@ package myCounter;
                 endaction
                 action
                     let testData = testVector[pntr];
-                    let result  <- dut.counterValue();
+                    let result   = dut.counterValue();
                     let print = $format("incr: %d, decr: %d", testData.incr, testData.decr);
                     $display(print);
                     if( result == testData.expectedCount )
