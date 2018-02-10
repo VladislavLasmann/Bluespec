@@ -39,7 +39,7 @@ package ALUTestFSM;
         method Action   setOperands(SignedOrUnsigned a, SignedOrUnsigned b) if ( !readyForCalc );
             opA     <= a;
             opB     <= b;
-            if( a matches tagged Signed .aVal &&& b matches tagges Signed .bval)
+            if( a matches tagged Signed .aVal &&& b matches tagged Signed .bval)
                 result  <= tagged Signed 1;
             else
                 result  <= tagged Unsigned 1;
