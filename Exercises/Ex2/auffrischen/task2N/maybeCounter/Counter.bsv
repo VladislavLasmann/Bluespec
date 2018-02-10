@@ -11,7 +11,7 @@ package Counter;
     typedef struct {
         UInt#(32) incr;
         UInt#(32) decr;
-        UInt#(32) expectedCount
+        UInt#(32) expectedCount;
     } TestData deriving (Eq, Bits);
 /////////////////////////////////////////////////////////////////////////////
     interface SimpleCounter;
