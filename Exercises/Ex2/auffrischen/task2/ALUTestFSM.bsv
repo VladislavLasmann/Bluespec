@@ -51,7 +51,7 @@ package ALUTestFSM;
         endmethod
 
         method ActionValue#(Int#(32)) getResult();
-            return operation;
+            return result;
         endmethod
 
     endmodule
