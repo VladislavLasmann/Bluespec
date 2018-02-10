@@ -78,7 +78,7 @@ package ALUTestFSM;
                 action
                     let testData = testVector[counter];
                     let result   <- dut.getResult();
-                    let print = $format("Calculation: %d ", testData.opA) + fshow(testData.operator) + $format("$d", testData.opB);
+                    let print = $format("Calculation: %d ", testData.opA) + fshow(testData.operator) + $format(" %d", testData.opB);
                     $display(print);
                     if( result == testData.expectedResult ) begin
                         $display("Test #%d: correct. Result: %d", counter, result);
