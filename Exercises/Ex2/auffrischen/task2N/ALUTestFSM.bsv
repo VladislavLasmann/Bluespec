@@ -86,7 +86,7 @@ package ALUTestFSM;
             validResult <= True;
         endrule
 
-        rule calculateSigned ( readyForCalc &&& opA matches tagged Unsigned .aVal &&& opB matches tagged Unsigned .bVal);
+        rule calculateUnsigned ( readyForCalc &&& opA matches tagged Unsigned .aVal &&& opB matches tagged Unsigned .bVal);
             UInt#(32)   tmpResult = 0;
             case(operation) 
                 Mul:    tmpResult = aVal * bVal;
