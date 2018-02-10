@@ -36,4 +36,33 @@ package FSMTests;
         mkAutoFSM(mySecondFSM);
     endmodule
 
+    module mkThirdFSM(Empty);
+        Reg#(UInt#(12)) counter <- mkReg(0);
+        PulseWire       pw      <- mkPulseWire();
+        Reg#(UInt#(12)) i       <- mkReg(0);
+
+        rule count (i < 99);
+            i <= i + 1;
+        endrule
+
+        rule resetCount (i == 99);
+            i <= 0;
+            pw.send();
+        endrule
+
+        Stmt thirdFSM = {
+            seq
+                for( i <= 0; i < 20; i <= i + 1) seq
+                    $display("(%0d) Iteration %d", $time, i);
+                endseq
+
+                $finish();
+            endseq
+        };    
+        FSM myFSM <- mkFSMWithPred(thirdFSM, pw);
+        rule startFSM( myFSM.done() );
+            myFSM.start();
+        endrule
+    endmodule
+
 endpackage
