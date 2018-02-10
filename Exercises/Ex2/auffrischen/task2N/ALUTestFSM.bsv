@@ -77,7 +77,7 @@ package ALUTestFSM;
                 Sub:    tmpResult = opA - opB;
                 And:    tmpResult = opA & opB;
                 Or:     tmpResult = opA | opB;
-                Pow:    pow.getResult();
+                Pow:    tmpResult = pow.getResult();
             endcase
 
             result <= tmpResult;
