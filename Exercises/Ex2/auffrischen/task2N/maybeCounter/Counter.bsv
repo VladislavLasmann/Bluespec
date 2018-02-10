@@ -82,10 +82,14 @@ package Counter;
         };
         FSM testFSM <- mkFSM( testStmt );
         Stmt runFSM = {
-            for(i <= 0; i < maxElements; i <= i + 1) begin
-                testFSM.start();
-                testFSM.waitTillDone();
-            end
+            seq
+                action
+                    for(i <= 0; i < maxElements; i <= i + 1) seq
+                    testFSM.start();
+                    testFSM.waitTillDone();
+                    endseq
+                endaction
+            endseq
         };
         mkAutoFSM(runFSM);
     endmodule
