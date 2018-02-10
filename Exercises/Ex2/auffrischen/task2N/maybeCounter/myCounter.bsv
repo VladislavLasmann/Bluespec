@@ -1,4 +1,4 @@
-package Counter;
+package myCounter;
     import StmtFSM::*;
     import Vector::*;
 
