@@ -44,12 +44,12 @@ package circularBufferTest;
                 return e.first();
             endactionvalue
         endfunction
-
+        
         equiv("put", spec.enq, impl.put);
         equiv("get", pop(spec), impl.get);
     endmodule
 
-    module [Module] testChecker ();
+    module [Module] mkTestChecker();
         blueCheck( checkStack );
     endmodule
 
