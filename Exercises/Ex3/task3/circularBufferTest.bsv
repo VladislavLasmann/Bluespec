@@ -1,6 +1,8 @@
 package circularBufferTest;
     import BlueCheck::*;
     import Vector::*;
+    import FIFO::*;
+    import Stack::*;
 
     module mkCircularBuffer(FIFO);
         // Pointer for indizes. Max Bit size: 4, because max index is 15
