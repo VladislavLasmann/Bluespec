@@ -9,7 +9,7 @@ package ArithChecker;
             x + (y + z) == (x + y) + z;
 
         
-        function Bool subComm(Int#(4) x, Int#(4) y) =
+        function Bool subComm(Int#(4) x, Int#(4) y);
             let result = False;
             if( x < y )
                 result = x - y < y - x;
