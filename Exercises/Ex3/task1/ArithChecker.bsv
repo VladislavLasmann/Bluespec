@@ -8,10 +8,17 @@ package ArithChecker;
         function Bool addAssoc(Int#(4) x, Int#(4) y, Int#(4) z) =
             x + (y + z) == (x + y) + z;
 
-        /*
+        
         function Bool subComm(Int#(4) x, Int#(4) y) =
-            x - y == y - x;
-        */
+            begin
+                if( x < y )
+                    x - y < y - x;
+                else if ( x > y)
+                    x - y > y - x;
+                else
+                    x - y == y - x;
+            end
+        
         
         function Bool mulComm(Int#(4) x, Int#(4) y) =
             x * y == y * x;
