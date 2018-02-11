@@ -18,11 +18,13 @@ package ArithChecker;
         function Bool mulAssoc(Int#(4) x, Int#(4) y, Int#(4) z) =
             x * (y * z) == (x * y) * z;
         
-        
+
 
         prop("addComm"  , addComm);
         prop("AddSoc"   , addAssoc);
-        prop("subComm"  , subComm);
+        //prop("subComm"  , subComm);
+        prop("mulComm"  , mulComm);
+        prop("mulAssoc" , mulAssoc);
     endmodule
 
     module [Module] mkArithChecker ();
