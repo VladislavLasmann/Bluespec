@@ -10,15 +10,16 @@ package ArithChecker;
 
         
         function Bool subComm(Int#(4) x, Int#(4) y) =
-            begin
-                if( x < y )
-                    x - y < y - x;
-                else if ( x > y)
-                    x - y > y - x;
-                else
-                    x - y == y - x;
-            end
-        
+            let result = False;
+            if( x < y )
+                result = x - y < y - x;
+            else if ( x > y)
+                result = x - y > y - x;
+            else
+                result = x - y == y - x;
+            
+            return result;
+        endfunction
         
         function Bool mulComm(Int#(4) x, Int#(4) y) =
             x * y == y * x;
