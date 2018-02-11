@@ -8,7 +8,7 @@ package circularBufferTest;
         Reg#(UInt#(4))  readPntr    <- mkReg(0);
         Reg#(UInt#(4))  writePntr   <- mkReg(0);
         // Circulat Buffer:
-        Vector#(16, Reg#(Int#(16))) buffer;
+        Vector#(16, Reg#(Int#(16))) buffer  <- replicateM(mkRegU);
 
         method Action put(Int#(16) e) if ((writePntr + 1) != readPntr);
             buffer[writePntr] <= e;
@@ -44,6 +44,9 @@ package circularBufferTest;
                 return e.first();
             endactionvalue
         endfunction
+
+        equiv("put", spec.enq, impl.put);
+        equiv("get", pop(spec), impl.get);
     endmodule
 
     module [Module] testChecker ();
