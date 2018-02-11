@@ -26,13 +26,15 @@ package ArithChecker;
         function Bool mulAssoc(Int#(4) x, Int#(4) y, Int#(4) z) =
             x * (y * z) == (x * y) * z;
         
-
+        function Bool divIsMostlyNotComm(Int#(4) x, Int#(4) y) =
+            x == 0 || y == 0 || (x == y) || (-x == y) || x / y != y / x;
 
         prop("addComm"  , addComm);
         prop("AddSoc"   , addAssoc);
-        //prop("subComm"  , subComm);
+        prop("subComm"  , subComm);
         prop("mulComm"  , mulComm);
         prop("mulAssoc" , mulAssoc);
+        prop("divIsMostlyNotComm"   , divIsMostlyNotComm);
     endmodule
 
     module [Module] mkArithChecker ();
