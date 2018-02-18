@@ -2,14 +2,14 @@ package CRegCounter;
     import StmtFSM :: *;
 
     interface SimpleCounter;
-        method ActionValue #(UInt#(32)) incrdecr (#UInt#(32) incrval, UInt#(32) decrval);
+        method ActionValue #(UInt#(32)) incrdecr (UInt#(32) incrval, UInt#(32) decrval);
     endinterface
 
     module mkSimpleCounter(SimpleCounter);
         Reg #(UInt#(32)) counterVal <- mkReg(0);
         Reg #(UInt#(32)) ctrVal[2]  <- mkCReg(2, 0);
 
-        method ActionValue #(UInt#(32)) incrdecr (#UInt#(32) incrval, #UInt#(32) decrval);
+        method ActionValue #(UInt#(32)) incrdecr (UInt#(32) incrval, UInt#(32) decrval);
             counterVal  <= counterVal + ctrVal[0] - ctrVal[1];
             ctrVal[0]   <= incrval;
             ctrVal[1]   <= decrval;
