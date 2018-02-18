@@ -12,7 +12,7 @@ package CRegCounter;
             let ctrVal0 = ctrVal[0];
             ctrVal[0]   <= ctrVal0 + incrval;
             let ctrVal1 = ctrVal[1];
-            ctrVal[1|   <= ctrVal1 + decrval;
+            ctrVal[1]   <= ctrVal1 - decrval;
 
             return ctrVal[1];
         endmethod
