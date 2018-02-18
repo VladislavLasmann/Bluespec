@@ -2,7 +2,7 @@ package CRegCounter;
     import StmtFSM :: *;
 
     interface SimpleCounter;
-        method ActionValue #(UInt#(32)) incrdecr (#UInt#(32) incrval, #UInt#(32) decrval);
+        method ActionValue #(UInt#(32)) incrdecr (#UInt#(32) incrval, UInt#(32) decrval);
     endinterface
 
     module mkSimpleCounter(SimpleCounter);
