@@ -11,8 +11,8 @@ package CRegCounter;
 
         method ActionValue #(UInt#(32)) incrdecr (UInt#(32) incrval, UInt#(32) decrval);
             let ctrVal0 = ctrVal[0];
-            let ctrVal1 = ctrVal[1];
             ctrVal[0]   <= incrval;
+            let ctrVal1 = ctrVal[1];
             ctrVal[1]   <= decrval;
 
             counterVal  <= counterVal + ctrVal0 - ctrVal1;
