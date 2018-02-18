@@ -6,17 +6,15 @@ package CRegCounter;
     endinterface
 
     module mkSimpleCounter(SimpleCounter);
-        Reg #(UInt#(32)) counterVal <- mkReg(0);
         Reg #(UInt#(32)) ctrVal[2]  <- mkCReg(2, 0);
 
         method ActionValue #(UInt#(32)) incrdecr (UInt#(32) incrval, UInt#(32) decrval);
             let ctrVal0 = ctrVal[0];
-            ctrVal[0]   <= incrval;
+            ctrVal[0]   <= ctrVal0 + incrval;
             let ctrVal1 = ctrVal[1];
-            ctrVal[1]   <= decrval;
+            ctrVal[1|   <= ctrVal1 + decrval;
 
-            counterVal  <= counterVal + ctrVal0 - ctrVal1;
-            return counterVal;
+            return ctrVal[1];
         endmethod
 
     endmodule
