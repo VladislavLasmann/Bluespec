@@ -10,10 +10,12 @@ package CRegCounter;
         Reg #(UInt#(32)) ctrVal[2]  <- mkCReg(2, 0);
 
         method ActionValue #(UInt#(32)) incrdecr (UInt#(32) incrval, UInt#(32) decrval);
-            counterVal  <= counterVal + ctrVal[0] - ctrVal[1];
+            let ctrVal0 = ctrVal[0];
+            let ctrVal1 = ctrVal[1];
             ctrVal[0]   <= incrval;
             ctrVal[1]   <= decrval;
 
+            counterVal  <= counterVal + ctrVal0 - ctrVal1;
             return counterVal;
         endmethod
 
